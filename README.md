@@ -11,7 +11,7 @@
 #
 #"git push" para enviar los archivos al repositorio
 #
-#
+#LINK COPADO https://git-scm.com/book/es/v1/Fundamentos-de-Git-Consejos-y-trucos
 #
 #
 #

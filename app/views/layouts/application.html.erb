@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html  lang='en'>
   <head>
     <title>Educanding</title>
     <%= csrf_meta_tags %>
@@ -9,7 +9,32 @@
   </head>
 
   <body>
-  	<h1>¡Bienvenidos a Educanding!</h1>
+
+<ul class="nav navbar-nav navbar-expand-lg">
+  <li>
+    <a href="#">Educanding</a>
+  </li>
+
+  <li>
+    <a href="#">Preguntar</a>
+  </li>
+  <li>
+    <a href="#">Listar Preguntas</a>
+  </li>
+  <li>
+    <a href="#">Listar Etiquetas</a>
+  </li>
+    <li>
+    <a href="#">Listar Facultades</a>
+  </li>
+    <li class="dropdown my-2 my-lg-0">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">▼ </a>
+    <ul class="dropdown-menu">
+      <li><a href="logout.php">Cerrar Sesion</a></li>
+    </ul>
+  </li>
+</ul>
     <%= yield %>
   </body>
+
 </html>

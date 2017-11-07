@@ -13,3 +13,7 @@ Sobre rutas:
 	- El comando "rake routes": nos muestra las rutas que existen en el sistema
 	- El comando "resources :nombre_controlador" crea todas las rutas por defecto a cada método del controlador indicado
 	- Si queremos agregar rutas propias porque no nos sirven las que son por defecto, entonces en el archivo <routes.rb> ponemos "get /<url>, to:'<nombreControlador#nombreMétodo>'". Esto nos permite llamar desde código ruby al metodo del controlador deseado mediante "<url>_path"
+
+Sobre migraciones: Son las relaciones entre un modelo de datos y la base de datos.
+	- Se crean automágicamente con los campos seteados como columnas al momento de crear un modelo (ver comando de creación de modelo).
+	- Para poder ver las tablas creadas por los archivos migrate se debe ejecutar "rake db:migrate"

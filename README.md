@@ -1,4 +1,4 @@
-Easy guide ruby on rails!
+Easy guide ruby_on_rails!
 
 IMPORTANTE: CODIFICAR EN INGLES, para aprovechar la automagia de rails
 

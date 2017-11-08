@@ -51,3 +51,14 @@ Sobre MIGRACIONES:
 Sobre formularios:
 
 	(Falta experiencia para completar esta parte)
+
+
+Para loguear usuarios:
+	Se usa gema "devise"
+	Video interesante: https://www.youtube.com/watch?v=zJYuLebl-Js
+
+
+Sobre Git:
+	Para borrar una rama:
+		git push -d <remote_name> <branch_name>
+		git branch -d <branch_name>

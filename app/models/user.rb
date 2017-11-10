@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :answers
   has_many :comments
 
-  belongs_to :university
-  belongs_to :level
+  has_one :university
+  has_one :level
 
 end

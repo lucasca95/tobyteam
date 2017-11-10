@@ -3,7 +3,7 @@ class CreateReports < ActiveRecord::Migration[5.1]
     create_table :reports do |t|
       t.string :reason
       t.integer :user_id
-      t.references :reportable, :polimorphic => true
+      t.references :reportable, :polymorphic => true
 
       t.timestamps
     end

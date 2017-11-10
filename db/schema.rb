@@ -40,10 +40,11 @@ ActiveRecord::Schema.define(version: 20171110042917) do
   create_table "comments", force: :cascade do |t|
     t.string "body"
     t.integer "user_id"
+    t.string "commentable_type"
     t.bigint "commentable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["commentable_id"], name: "index_comments_on_commentable_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   end
 
   create_table "labels", force: :cascade do |t|
@@ -86,10 +87,11 @@ ActiveRecord::Schema.define(version: 20171110042917) do
   create_table "reports", force: :cascade do |t|
     t.string "reason"
     t.integer "user_id"
+    t.string "reportable_type"
     t.bigint "reportable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["reportable_id"], name: "index_reports_on_reportable_id"
+    t.index ["reportable_type", "reportable_id"], name: "index_reports_on_reportable_type_and_reportable_id"
   end
 
   create_table "universities", force: :cascade do |t|
@@ -125,10 +127,11 @@ ActiveRecord::Schema.define(version: 20171110042917) do
   create_table "votes", force: :cascade do |t|
     t.boolean "like"
     t.integer "user_id"
+    t.string "votable_type"
     t.bigint "votable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["votable_id"], name: "index_votes_on_votable_id"
+    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
   end
 
 end

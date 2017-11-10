@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ $# = 1 ]
+	then
+		echo 'Se pullea la rama desarrollo desde git'
+		git pull educanding desarrollo
+		echo 'Se muestra el estado de git'
+		git status
+		echo Se agregan cambios al proximo commiit
+		git add .
+		echo 'Se realiza un commit con mensaje: $1'
+		git commit -m "$1"
+		echo 'Se muestra el nuevo estado del repositorio local'
+		git status
+		echo 'Se pushea el repositorio local hacia git'
+		git push educanding desarrollo
+		echo 'Tenemos el repositorio remoto actualizado'
+else
+	echo "Falta mje"
+fi

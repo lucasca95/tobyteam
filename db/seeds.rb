@@ -45,9 +45,5 @@ Report.find_or_create_by(reason: "Denuncia Comentario", user_id: 3, reportable_i
 puts "Creo Votos"
 Vote.find_or_create_by(user_id: 2, votable_id: 1, votable_type: "Question", like:true)
 Vote.find_or_create_by(user_id: 2, votable_id: 1, votable_type: "Answer", like:true)
-Vote.find_or_create_by(user_id: 2, votable_id: 1, votable_type: "Comment", like:true)
 Vote.find_or_create_by(user_id: 1, votable_id: 1, votable_type: "Answer", like:false)
 Vote.find_or_create_by(user_id: 1, votable_id: 1, votable_type: "Question", like:false)
-Vote.find_or_create_by(user_id: 1, votable_id: 1, votable_type: "Comment", like:false)
-Vote.find_or_create_by(user_id: 1, votable_id: 2, votable_type: "Comment", like:false)
-Vote.find_or_create_by(user_id: 2, votable_id: 2, votable_type: "Comment", like:true)

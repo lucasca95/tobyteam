@@ -13,8 +13,8 @@ Action.find_or_create_by(name: "Votar Positvo", points: 3)
 Action.find_or_create_by(name: "Votar Negativo", points: -1)
 
 puts "Creo Etiqueta"
-Label.find_or_create_by(title: "Ingenieria", active: true)
-Label.find_or_create_by(title: "Electronica", active: false)
+etiqueta_ingenieria=Label.find_or_create_by(title: "Ingenieria", active: true)
+etiqueta_electronica=Label.find_or_create_by(title: "Electronica", active: false)
 
 puts "Creo Notificaciones"
 Notification.find_or_create_by(body: "Notificaion 1", user_id: 3, read:true)
@@ -23,13 +23,13 @@ Notification.find_or_create_by(body: "Notificaion 3", user_id: 3, read:false)
 Notification.find_or_create_by(body: "Notificaion 1", user_id: 2, read:false)
 
 puts "Se crean los usuarios Lucas, Mono, Vincent"
-User.find_or_create_by(name: "Lucas", lastname: "Camino", email: "lucasca95@yahoo.com.ar", encrypted_password:"$2a$11$yNE4dSUocnYHtUlqkVW9JuU1fB/0hORgTdKm08N.4oRAd8dZAUAoW", points: 10, university_id: 0, level_id: 1)
-User.find_or_create_by(name: "Lihuen", lastname: "Figueroa", email: "tumonitosexy@msn.com.ar", encrypted_password:"$2a$11$yNE4dSUocnYHtUlqkVW9JuU1fB/0hORgTdKm08N.4oRAd8dZAUAoW", points: 10, university_id: 0, level_id: 1)
-User.find_or_create_by(name: "Vincent", lastname: "Corrao", email: "licenciado@iscl.com.mx", encrypted_password:"$2a$11$yNE4dSUocnYHtUlqkVW9JuU1fB/0hORgTdKm08N.4oRAd8dZAUAoW", points: 10, university_id: 1, level_id: 1)
+User.create(name: "Lucas", lastname: "Camino", email: "lucasca95@yahoo.com.ar", password:"12345678", points: 10, level_id: 1)
+User.create(name: "Lihuen", lastname: "Figueroa", email: "tumonitosexy@msn.com.ar", password:"1235678", points: 10, level_id: 1)
+User.create(name: "Vincent", lastname: "Corrao", email: "licenciado@iscl.com.mx", password:"12345678", points: 10, university_id: 1, level_id: 1)
 
 puts "Creo Pregunta"
-Question.find_or_create_by(title: "¿Que hace Ruby?", body: "Serian tan amables de contrame lo que hace ruby?", user_id: 3)
-
+pregunta_1=Question.find_or_create_by(title: "¿Que hace Ruby?", body: "Serian tan amables de contrame lo que hace ruby?", user_id: 3)
+pregunta_1.labels << etiqueta_ingenieria
 puts "Creo Respuesta"
 Answer.find_or_create_by(body: "La verdad que preguntas como el culo", user_id: 3, question_id:1)
 

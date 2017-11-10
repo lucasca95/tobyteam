@@ -9,6 +9,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
+    @listaQuestions=Question.all
   end
 
   def create

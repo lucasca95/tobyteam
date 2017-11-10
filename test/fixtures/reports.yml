@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reason: MyString
+  user_id: 1
+  reportable: one
+
+two:
+  reason: MyString
+  user_id: 1
+  reportable: two

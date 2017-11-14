@@ -3,12 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :notifications
+  has_many :notifications, dependent: :destroy
   has_many :votes
   has_many :reports
-  has_many :questions
-  has_many :answers
-  has_many :comments
+  has_many :questions, dependent: :destroy
+  has_many :answers, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   belongs_to :university, optional: true
   belongs_to :level

@@ -1,2 +1,6 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erb</p>
+ <table>	
+ <%= render @question %>
+ <%= render :partial => "answer", :collection => @answers %>
+ <%= render :partial => "comment_question", :collection => @comments %>
+ </table>
+ 

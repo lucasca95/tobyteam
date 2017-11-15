@@ -12,12 +12,13 @@
 </thead>
   <% @listaQuestions.each do |v| %>
   <tbody>
-  <tr>
-    <td><%=v.title%></td>
-    
-    <td><%=v.body%></td>
 
-    <td>Creada por el usuario : <%=v.user.name%></td>
+  <tr>
+    <td><%= link_to v.title ,v%></td>
+    
+    <td><%= truncate( v.body, length: 30)%></td>
+
+    <td> <%=v.user.name%></td>
 
     <td><%=v.created_at%></td>
   </tr>

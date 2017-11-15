@@ -4,5 +4,9 @@
 	<br>
 	<%= f.label :body %>
 	<%= f.text_area :body %>
+	<br>
+	<%= f.label :labels %>
+	<%= f.collection_check_boxes :label_ids,@all_labels,:id,:title %>
+	<br>
 	<%= f.submit 'Enviar' %>
 <% end %>

@@ -6,6 +6,7 @@ class AnswersController < ApplicationController
   end
 
   def show
+        @answer = Answer.find(params[:id])
   end
 
   def index

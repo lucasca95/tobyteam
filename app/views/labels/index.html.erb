@@ -1,2 +1,21 @@
-<h1>Labels#index</h1>
-<p>Find me in app/views/labels/index.html.erb</p>
+<h1>Listado labels</h1>
+<br><br>
+
+<table class="table">
+<thead>
+  <tr>
+    <th>Titulo</th>
+    <th>Active</th>
+  </tr>
+</thead>
+  <% @lista_labels.each do |v| %>
+  <tbody>
+  <tr>
+    <td><%=v.title%></td>
+    
+    <td><%=v.active%></td>
+
+  </tr>
+  <%end%>
+  </tbody>
+</table>

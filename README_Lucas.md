@@ -7,7 +7,8 @@ Sobre modelos:
 
 	-Creación rapida de un modelo:
 		rails generate model "nombre_del_modelo_singular_minuscula" "nombre_col1" "nombre_col2" "nombre_col3" (etc). Si alguna columna no es string, se debe indicar explícitamente el tipo; por ejemplo "edad:integer".
-	-Creacion de campo de modelo:
+
+	-Creacion de campo de modelo (para seed):
 		op1)
 			x=Modelo.new
 			x.campo1="......." (si es string)
@@ -19,8 +20,24 @@ Sobre modelos:
 		has_many :"nombre_del_modelo_plural_minuscula"
 		belongs_to :"nombre_del_modelo_singular_minuscula"
 
+		Si queremos que al borrar un objeto se borre otro que dependa del borrado, hacemos:
+			"class Monstruo < ActiveRecord::Base
+				has_many :tweets , dependent: :destroy
+			end"
+
 	Validaciones:
 		validates :"nombreColumna", "tipoDeValidacion": true
+
+		tipos de validaciones:
+			*presence:true
+			*uniqueness: true
+			*numericality: true
+			*length: { minimum: 0, maximum: 2000 }
+			*format: { with: /.*/ }
+			*acceptance: true
+			*confirmation: true
+			
+		Ejemplo de validación:	validates :edad, exclusion: { 0...20 }, message: “Debes ser mayor a 21”
 
 	Links interesantes:
 		1) https://carlossanchezperez.wordpress.com/2013/01/13/mi-guia-para-especificar-las-relaciones-en-los-modelos-active-record-rubyonrails/

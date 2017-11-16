@@ -9,12 +9,12 @@
     
   </head>
 
-  <body>
-
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <body style="background-color: #ccccff ">
+  <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+<nav class="navbar navbar-default navbar-static-top" role="navigation" >
   <!-- El logotipo y el icono que despliega el menú se agrupan
        para mostrarlos mejor en los dispositivos móviles -->
-  <div class="navbar-header">
+  <div class="navbar-header" >
     <button type="button" class="navbar-toggle" data-toggle="collapse"
             data-target=".navbar-ex1-collapse">
       <span class="sr-only">Desplegar navegación</span>
@@ -22,12 +22,12 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="" href="#">  <%= image_tag 'educanding_azul.png' , size: '152x50' %></a>
+    <a class="" href="/questions">  <%= image_tag 'educanding_azul.png' , size: '152x50' %></a>
   </div>
  
   <!-- Agrupar los enlaces de navegación, los formularios y cualquier
        otro elemento que se pueda ocultar al minimizar la barra -->
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
+  <div class="collapse navbar-collapse navbar-ex1-collapse" style="background-color: #E6F3FF">
     <ul class="nav navbar-nav">
       <li><%= link_to "Crear Pregunta", :controller => '/questions', :action => :new %></li>
       <li><%= link_to "Ver Preguntas" , questions_path %></li>
@@ -49,25 +49,29 @@
  
     <form class="navbar-form navbar-left" role="search">
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Buscar">
+        <input type="text" class="form-control " placeholder="Buscar">
       </div>
-      <button type="submit" class="btn btn-default">Enviar</button>
+      <button type="submit" class="btn btn-default" style="background-color: #00e68a">Enviar</button>
     </form>
  
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav ">
       <% if user_signed_in? %>
-        <li><%= current_user.name + " " + current_user.lastname %></a></li>
+            <a href="/users/sign_in" type="button" class="btn btn-success" ><%= current_user.name + " " + current_user.lastname %></a>
+            <%= link_to "Me quiero ir!", destroy_user_session_path,method: :delete, class:"btn btn-danger", type:"button"%>
+             <%= link_to "Ver Perfil", user_path(current_user.id) ,method: :get, class:"btn btn-warning", type:"button"%>
+            
       <% else %>
-        <li><a href="#" class=""></a> NO ESTAS LOGUEADO</li>
+       
+        <a href="/users/sign_in" type="button" class="btn btn-success" >Logueate!</a>
+         <a href="/users/sign_up" type="button" class="btn btn-success " >Registrate!</a>
       <% end %>
     </ul>
       <ul class="nav navbar-nav navbar-right text-center"> 
-      <li class="dropdown">
+      <li class="dropdown ">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
            <b class="caret"></b>
         </a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Chusmear Perfil</a></li>
+        <ul class="dropdown-menu ">
           <li><a href="#">Modificar Perfil</a></li>
           <li><a href="#">Acción #3</a></li>
           <li class="divider"></li>
@@ -77,6 +81,8 @@
     </ul>
   </div>
 </nav>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

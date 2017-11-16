@@ -3,11 +3,20 @@
 	<td colspan="4">
 		<table class="table">
 			<tr>
-				<td rowspan="2"><%=@question.user.name %></td>
+				<td rowspan="2"><%=@question.user.name %><br>
+					<%=link_to "+","" %> <%=link_to "-","" %></td>
 				<td colspan="3"><%=@question.title%></td>
 			</tr>
 			<tr>
 				<td colspan="3"><%=@question.body%></td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<% @question.labels.each do |label| %>
+					<%= link_to label.title, label%>
+					<%end%>
+					
+				</td>
 			</tr>
 		</table>
 	</td>

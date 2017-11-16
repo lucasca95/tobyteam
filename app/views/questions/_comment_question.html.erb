@@ -3,10 +3,8 @@
 	<td colspan="3">
 		<table class="table">
 			<tr>
-				<td rowspan="2"><%=comment_question.user.name%></td>
-				<td colspan="3">Titulo Comentario</td>
-			</tr>
-			<tr>
+				<td rowspan="1"><%=comment_question.user.name%><br>
+					<%=link_to "+","" %> <%=link_to "-","" %></td>
 				<td colspan="3"><%=comment_question.body%></td>
 			</tr>
 		</table>

@@ -30,6 +30,7 @@
         <%= f.label :"Confirmar contraseňa" %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
+      <%= f.hidden_field :level_id, :value => 1 %>
       <%= f.submit t('.sign_up', default: 'Sign up'), class: 'btn btn-primary' %>
     <% end %>
   </div>

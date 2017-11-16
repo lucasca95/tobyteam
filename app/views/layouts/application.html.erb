@@ -10,7 +10,7 @@
   </head>
 
   <body style="background-color: #ccccff ">
-
+  <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 <nav class="navbar navbar-default navbar-static-top" role="navigation" >
   <!-- El logotipo y el icono que despliega el menú se agrupan
        para mostrarlos mejor en los dispositivos móviles -->
@@ -81,7 +81,8 @@
     </ul>
   </div>
 </nav>
-
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

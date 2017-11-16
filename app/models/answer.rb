@@ -6,4 +6,11 @@ class Answer < ApplicationRecord
 
 	belongs_to :question
 
+	#Validaciones
+		validates :body,
+			presence: true
+		validates :user_id,
+			presence: true
+		validates :question_id,
+			presence: true
 end

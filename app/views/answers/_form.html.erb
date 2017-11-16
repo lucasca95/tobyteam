@@ -1,0 +1,6 @@
+<%= form_for @answer do |f| %>
+	<%= f.hidden_field :question_id, :value => @question.id %>
+	<%= f.label :"Cuerpo de Respuesta: " %>
+	<%= f.text_area :body %>
+	<%= f.submit 'Guardar' %>
+<% end %>

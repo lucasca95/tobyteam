@@ -1,0 +1,7 @@
+<%= form_for @label do |f| %>
+	<%= f.label :"Título de la etiqueta: " %>
+	<%= f.text_field :title %>
+	<%= f.label :active %>
+	<%= f.check_box :active %>
+	<%= f.submit 'Guardar' %>
+<% end %>

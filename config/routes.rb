@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :levels
   resources :universities
   resources :users
+  resources :oxigens
   get '/error', to: 'main#error'
   
   root :to => 'questions#index'

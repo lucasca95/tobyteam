@@ -4,7 +4,20 @@
 		<table class="table">
 			<tr>
 				<td rowspan="1"><%=answer.user.name%><br>
-					<%=link_to "+","" %> <%=link_to "-","" %></td>
+					<% @datosp = { 	answer:answer,like: true}%>
+					<% @datosn = { 	answer:answer,like: false}%> 
+					<% @voto = answer.votes.where(user: current_user).first%> 
+
+					<% if @voto.nil? %> 
+						<%=button_to "+", :controller => '/users', method: :true, :action => :votar_respuesta, :params => @datosp%> 
+						<%=button_to "-", :controller => '/users', method: :true, :action => :votar_respuesta, :params => @datosn%>
+					<% else %>
+						<% if !@voto.like %> 
+							<%=button_to "+", :controller => '/users', method: :true, :action => :votar_respuesta, :params => @datosp%> 
+						<% else %>
+							<%=button_to "-", :controller => '/users', method: :true, :action => :votar_respuesta, :params => @datosn%>
+						<% end %>
+					<% end %>
 				<td colspan="3"><%=answer.body%></td>
 			</tr>
 			<%= render :partial => "comment", :collection => answer.comments %>

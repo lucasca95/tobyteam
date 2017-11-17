@@ -4,7 +4,23 @@
 		<table class="table">
 			<tr>
 				<td rowspan="2"><%=@question.user.name %><br>
-					<%=link_to "+","" %> <%=link_to "-","" %></td>
+					<% @datosp = { 	question:@question,like: :true}%>
+					<% @datosn = { 	question:@question,like: :false}%> 
+					<% @voto = @question.votes.where(user: current_user).first%> 
+
+					<% if @voto.nil? %> 
+						<%=button_to "+", :controller => '/users', method: :true, :action => :votar_pregunta, :params => @datosp%> 
+						<%=button_to "-", :controller => '/users', method: :true, :action => :votar_pregunta, :params => @datosn%>
+					<% else %>
+						<% if !@voto.like %> 
+							<%=button_to "+", :controller => '/users', method: :true, :action => :votar_pregunta, :params => @datosp%> 
+						<% else %>
+							<%=button_to "-", :controller => '/users', method: :true, :action => :votar_pregunta, :params => @datosn%>
+						<% end %>
+					<% end %>
+
+
+					 </td>
 				<td colspan="3"><%=@question.title%></td>
 			</tr>
 			<tr>

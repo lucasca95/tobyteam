@@ -1,14 +1,14 @@
- <table>	
+ <table class="table " style="border-width: 3px;border: solid; border-color:  #257d9e ;">	
  <%= render @question %>
  <%= render :partial => "answer", :collection => @q_answers %>
  <%= render :partial => "comment_question", :collection => @q_comments %>
- <tr>
-	<td colspan="4">
+ <tr style="border-width: 3px;border: solid; border-color:  #257d9e ;">
+	<td colspan="4" >
 		 <%= render 'answers/form', :collection => @new_a  %>
 	</td>
 </tr>
-<tr>
-	<td colspan="4">
+<tr >
+	<td colspan="4" >
 		 <%= render 'comments/form',:collection => @new_c %>
 	</td>
 </tr>

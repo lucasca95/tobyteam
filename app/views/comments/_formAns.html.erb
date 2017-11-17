@@ -1,8 +1,10 @@
 
+<div class="table table-bordered">
 <%= form_for @new_ca do |f| %>
 	<%= f.hidden_field :commentable_id, :value => @new_ca.commentable_id %>
 	<%= f.hidden_field :commentable_type, :value => @new_ca.commentable_type %>
-	<%= f.label :"Cuerpo de Comentario: " %>
-	<%= f.text_area :body %>
-	<%= f.submit 'Guardar' %>
+	<%= f.label :"Comente Aqui "%>
+	<%= f.text_area :body , class: 'form-control' , placeholder: 'Ingrese su Comentario Aqui' %>
+	<%= f.submit 'Comente la Respuesta!', class: 'btn btn-info btn-sm' %>
 <% end %>
+</div>

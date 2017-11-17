@@ -1,0 +1,23 @@
+<h1>Listado labels</h1>
+<br><br>
+
+<table class="table">
+<thead>
+  <tr>
+    <th>Usuario</th>
+    <th>Pregunta</th>
+    <th>Respuesta</th>
+  </tr>
+</thead>
+  <% @lista_answers.each do |v| %>
+  <tbody>
+  <tr>
+    <td><%=v.user.name%></td>
+    
+    <td><%=v.question.body%></td>
+
+    <td><%=v.body%></td>
+  </tr>
+  <%end%>
+  </tbody>
+</table>

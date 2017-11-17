@@ -1,0 +1,40 @@
+
+<tr >
+	<td ></td>
+	<td colspan="3"  >
+		<table class="table " style="border-width: 3px;border: solid; border-color:  #257d9e ;" >
+			<tr style="border-width: 3px;border: solid; border-color:  #257d9e ;">
+				<td rowspan="1"  style="border-width: 3px;border: solid; border-color:  #257d9e ;"><%=answer.user.name%><br>
+					<% @datosp = { 	answer:answer,like: true}%>
+					<% @datosn = { 	answer:answer,like: false}%> 
+					<% @voto = answer.votes.where(user: current_user).first%> 
+
+					<% if @voto.nil? %> 
+						<%= link_to "", users_votar_respuesta_path(@datosp) ,method: :post, class:"btn btn-default glyphicon glyphicon glyphicon-thumbs-up", type:"button"%>
+						<%= link_to "", users_votar_respuesta_path(@datosn) ,method: :post, class:"btn btn-default glyphicon glyphicon glyphicon-thumbs-down", type:"button"%>
+
+
+						
+					<% else %>
+						<% if !@voto.like %> 
+							<%= link_to "", users_votar_respuesta_path(@datosp) ,method: :post, class:"btn btn-default glyphicon glyphicon glyphicon-thumbs-up", type:"button"%>
+							<%= link_to "", users_votar_respuesta_path(@datosn) ,method: :post, class:"btn btn-default glyphicon glyphicon glyphicon-thumbs-down", type:"button", disabled: true %>
+						<% else %>
+							<%= link_to "", users_votar_respuesta_path(@datosp) ,method: :post, class:"btn btn-default glyphicon glyphicon glyphicon-thumbs-up", type:"button",disabled: true%>
+							<%= link_to "", users_votar_respuesta_path(@datosn) ,method: :post, class:"btn btn-default glyphicon glyphicon glyphicon-thumbs-down", type:"button"%>
+						<% end %>
+					<% end %>
+				<td colspan="3"><%=answer.body%></td>
+
+			</tr>
+			<%= render :partial => "comment", :collection => answer.comments %>
+			<tr  style="border-width: 3px;border: solid; border-color:  #257d9e ;">
+				<td colspan="3" >
+					<% @new_ca = Comment.new %>
+					<% @new_ca.commentable = answer %>
+					<%= render 'comments/formAns', :collection => @new_c %>
+				</td>
+			</tr>
+		</table>
+	</td>
+</tr>

@@ -1,0 +1,10 @@
+
+<div class="table table-hover table-bordered">
+<%= form_for @new_a do |f| %>
+	<%= f.hidden_field :commentable_id, :value => @new_c.commentable_id %>
+	<%= f.hidden_field :commentable_type, :value => @new_c.commentable_type %>
+	<%= f.label :"Comente Aqui "%>
+	<%= f.text_area :body , class: 'form-control' , placeholder: 'Ingrese su Comentario Aqui' %>
+	<%= f.submit 'Comente la Pregunta!', class: 'btn btn-info btn-sm' %>
+<% end %>
+</div>

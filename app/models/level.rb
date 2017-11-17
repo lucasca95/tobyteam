@@ -3,11 +3,16 @@ class Level < ApplicationRecord
 	has_and_belongs_to_many :actions
 
 	#Validaciones
-	validates :body,
+	validates :points,
 		presence: true
-	validates :body,
+	validates :points,
 		numericality: true
-	validates :body,
+	validates :points,
+		uniqueness: true
+
+	validates :name,
+		presence: true
+	validates :name,
 		uniqueness: true
 
 end

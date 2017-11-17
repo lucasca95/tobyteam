@@ -1,6 +1,16 @@
  <table>	
  <%= render @question %>
- <%= render :partial => "answer", :collection => @answers %>
- <%= render :partial => "comment_question", :collection => @comments %>
+ <%= render :partial => "answer", :collection => @q_answers %>
+ <%= render :partial => "comment_question", :collection => @q_comments %>
+ <tr>
+	<td colspan="4">
+		 <%= render 'answers/form', :collection => @new_a  %>
+	</td>
+</tr>
+<tr>
+	<td colspan="4">
+		 <%= render 'comments/form',:collection => @new_c %>
+	</td>
+</tr>
  </table>
  

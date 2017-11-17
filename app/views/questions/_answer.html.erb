@@ -3,14 +3,18 @@
 	<td colspan="3">
 		<table class="table">
 			<tr>
-				<td rowspan="2"><%=answer.user.name%><br>
+				<td rowspan="1"><%=answer.user.name%><br>
 					<%=link_to "+","" %> <%=link_to "-","" %></td>
-				<td colspan="3">Titulo Respuesta</td>
-			</tr>
-			<tr>
 				<td colspan="3"><%=answer.body%></td>
 			</tr>
 			<%= render :partial => "comment", :collection => answer.comments %>
+			<tr>
+				<td colspan="3">
+					<% @new_ca = Comment.new %>
+					<% @new_ca.commentable = answer %>
+					<%= render 'comments/formAns', :collection => @new_c %>
+				</td>
+			</tr>
 		</table>
 	</td>
 </tr>

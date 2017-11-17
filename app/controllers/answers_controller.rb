@@ -1,7 +1,6 @@
 class AnswersController < ApplicationController
   def new
     @answer = Answer.new
-    @question= Question.find(2)
   end
 
   def edit
@@ -9,6 +8,7 @@ class AnswersController < ApplicationController
 
   def show
         @answer = Answer.find(params[:id])
+        redirect_to @answer.question
   end
 
   def index
@@ -20,7 +20,7 @@ class AnswersController < ApplicationController
       @answer.user = current_user
       
     if @answer.save
-      redirect_to answers_path
+      redirect_to @answer.question
     else
       redirect_to :controller => 'main', :action => 'error'
     end

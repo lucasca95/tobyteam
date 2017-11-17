@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
   def new
     @question = Question.new
     @all_labels = Label.where(active: true).all
+
   end
 
   def edit
@@ -10,9 +11,11 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    @answers = @question.answers
-    @comments = @question.comments
-
+    @q_answers = @question.answers
+    @q_comments = @question.comments
+    @new_a = Answer.new
+    @new_c = Comment.new
+    @new_c.commentable = @question
   end
 
   def index

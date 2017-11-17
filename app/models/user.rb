@@ -13,4 +13,23 @@ class User < ApplicationRecord
   belongs_to :university, optional: true
   belongs_to :level
 
+  #Validaciones
+    #nombre
+    validates :name, presence: true
+    validates :name, format: { with: /\A[a-zA-Z]+\z/,
+    message: ": sólo se permiten letras en el nombre" }
+
+    #apellido
+    validates :lastname, presence: true
+    validates :lastname, format: { with: /\A[a-zA-Z]+\z/,
+    message: ": sólo se permiten letras en el apellido" }
+
+    #points
+    validates :points, presence: true
+    validates :points, numericality: true
+
+    
+    #level_id
+    validates :level_id, presence: true
+    validates :level_id, numericality: true
 end

@@ -24,11 +24,14 @@ class QuestionsController < ApplicationController
     @q = Question.new(params.require(:question).permit(:title, :body, label_ids: []))
     @q.user = current_user
     
-    if @q.save 
-      redirect_to questions_path
-    else
-      redirect_to :controller => 'main', :action => 'error'
-    end 
+    if ((@q.label_ids.length>0) and (@q.label_ids.length<6))
+      if @q.save 
+        redirect_to questions_path
+      else redirect_to :controller => 'main', :action => 'error'
+      end
+    else redirect_to :controller => 'main', :action => 'error'
+    end
+       
   end
 
   def update

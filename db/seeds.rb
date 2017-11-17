@@ -86,7 +86,7 @@ etiqueta_electronica=Label.find_or_create_by(title: "Electronica", active: false
 
 
 puts "Se crean los usuarios Lucas, Mono, Vincent"
-User.create(name: "Lucas", lastname: "Camino", email: "lucasca95@yahoo.com.ar", password:"12345678", points: 10, level_id: 1)
+User.create(name: "Lucas", lastname: "Camino", email: "lucasprueba@yahoo.com.ar", password:"12345678", points: 10, level_id: 1)
 User.create(name: "Lihuen", lastname: "Figueroa", email: "tumonitosexy@msn.com.ar", password:"1235678", points: 10, level_id: 1)
 User.create(name: "Vincent", lastname: "Corrao", email: "licenciado@iscl.com.mx", password:"12345678", points: 10, university_id: 1, level_id: 1)
 

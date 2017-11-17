@@ -1,14 +1,12 @@
-<tr>
-	<td></td>
-	<td></td>
+<tr>	<td ></td>
 	<td colspan="2">
-		<table class="table">
-			<tr>
-				<td rowspan="2"><%=comment.user.name%><br>
-				<td colspan="3">Titulo Comentario</td>
+		<table class="table" >
+			<tr style="border-width: 3px;border: solid; border-color:  #257d9e ;">
+				<td rowspan="2" class="info"  style="border-width: 3px;border: solid; border-color:  #257d9e ;"><%=comment.user.name%><br>
+				<td ><%= comment.created_at.strftime("%Y-%m-%d")%></td>
 			</tr>
-			<tr>
-				<td colspan="3"><%=comment.body%></td>
+			<tr style="border-width: 3px;border: solid; border-color:  #257d9e ;">
+				<td ><%=comment.body%></td>
 			</tr>
 		</table>
 	</td>

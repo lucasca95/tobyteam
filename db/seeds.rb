@@ -4,6 +4,10 @@ puts "Creo Univeridad"
 University.find_or_create_by(name: "UNLP", province: "Buenos Aires", url:"unlp.edu.ar")
 University.find_or_create_by(name: "UBA", province: "Capital Federal", url:"uba.edu.ar")
 
+
+
+
+
 puts "Creo Niveles"
 level_1=Level.find_or_create_by(name: "Junior", points: 10)
 level_2=Level.find_or_create_by(name: "Senior", points: 100)

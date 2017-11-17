@@ -1,6 +1,8 @@
+<div class="table  table-bordered">
 <%= form_for @new_a do |f| %>
 	<%= f.hidden_field :question_id, :value => @question.id %>
-	<%= f.label :"Cuerpo de Respuesta: " %>
-	<%= f.text_area :body %>
-	<%= f.submit 'Guardar' %>
+	<%= f.label :"Respuesta Aqui "%>
+	<%= f.text_area :body , class: 'form-control' , placeholder: 'Ingrese su Respuesta Aqui' %>
+	<%= f.submit 'Responda la Pregunta!', class: 'btn btn-primary btn-lg' %>
 <% end %>
+</div>

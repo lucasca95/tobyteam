@@ -1,9 +1,10 @@
-<tr>
-	<td></td>
-	<td colspan="3">
-		<table class="table">
-			<tr>
-				<td rowspan="1"><%=answer.user.name%><br>
+
+<tr >
+	<td ></td>
+	<td colspan="3"  >
+		<table class="table " style="border-width: 3px;border: solid; border-color:  #257d9e ;" >
+			<tr style="border-width: 3px;border: solid; border-color:  #257d9e ;">
+				<td rowspan="1"  style="border-width: 3px;border: solid; border-color:  #257d9e ;"><%=answer.user.name%><br>
 					<% @datosp = { 	answer:answer,like: true}%>
 					<% @datosn = { 	answer:answer,like: false}%> 
 					<% @voto = answer.votes.where(user: current_user).first%> 
@@ -19,10 +20,11 @@
 						<% end %>
 					<% end %>
 				<td colspan="3"><%=answer.body%></td>
+
 			</tr>
 			<%= render :partial => "comment", :collection => answer.comments %>
-			<tr>
-				<td colspan="3">
+			<tr  style="border-width: 3px;border: solid; border-color:  #257d9e ;">
+				<td colspan="3" >
 					<% @new_ca = Comment.new %>
 					<% @new_ca.commentable = answer %>
 					<%= render 'comments/formAns', :collection => @new_c %>

@@ -1,9 +1,9 @@
-<tr>
-	
-	<td colspan="4">
-		<table class="table">
-			<tr>
-				<td rowspan="2"><%=@question.user.name %><br>
+<tr >
+
+<td colspan="4" >
+		<table class="table table-hover table-bordered" style="border-width: 3px;border: solid; border-color:  #257d9e ;">
+			<tr class="danger" >
+				<td  rowspan="2" style="border-width: 3px;border: solid; border-color:  #257d9e ;"><%=@question.user.name %><br>
 					<% @datosp = { 	question:@question,like: :true}%>
 					<% @datosn = { 	question:@question,like: :false}%> 
 					<% @voto = @question.votes.where(user: current_user).first%> 
@@ -21,13 +21,13 @@
 
 
 					 </td>
-				<td colspan="3"><%=@question.title%></td>
+				<td colspan="3" style="border-width: 3px;border: solid; border-color:  #257d9e ;"><%=@question.title%></td>
 			</tr>
-			<tr>
-				<td colspan="3"><%=@question.body%></td>
+			<tr class="success" style="border-width: 3px;border: solid; border-color:  #257d9e ;">
+				<td colspan="3" style="border-width: 3px;border: solid; border-color:  #257d9e ;"><%=@question.body%></td>
 			</tr>
-			<tr>
-				<td colspan="4">
+			<tr >
+				<td colspan="4" style="border-width: 3px;border: solid; border-color:  #257d9e ;">
 					<% @question.labels.each do |label| %>
 					<%= link_to label.title, label%>
 					<%end%>

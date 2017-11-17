@@ -1,26 +1,27 @@
 <h1>Listado de Preguntas</h1>
 <br>
 
-<table class="table">
+<table class="table table-hover table-bordered" style="border-width: 5px;border: solid; border-color:  #000000 ;">
 <thead>
-  <tr>
-    <th>Titulo</th>
-    <th>Cuerpo</th>
-    <th>Usuario</th>
-    <th>Fecha</th>
+  <tr style="border-width: 5px;border: solid; border-color:  #000000 ;">
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Titulo</th>
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Cuerpo</th>
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Usuario</th>
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Fecha</th>
   </tr>
 </thead>
   <% @listaQuestions.each do |v| %>
-  <tbody>
+  <tbody style="border-width: 5px;border: solid; border-color:  #000000 ;">
 
-  <tr>
-    <td><%= link_to v.title ,v%></td>
+  <tr style="border-width: 5px;border: solid; border-color:  #000000 ;">
+    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"><%= link_to v.title ,v%></td>
     
-    <td><%= truncate( v.body, length: 30)%></td>
+    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"><FONT FACE="Comic Sans MS"><%= truncate( v.body, length: 30)%></FONT>></td>
 
-    <td> <%=v.user.name%></td>
 
-    <td><%=v.created_at%></td>
+    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"> <%=v.user.name%></td>
+
+    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"><%=v.created_at.strftime("%Y-%m-%d")%></td>
   </tr>
   <%end%>
   </tbody>

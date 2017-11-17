@@ -16,9 +16,9 @@ Rails.application.routes.draw do
   resources :users
   resources :oxigens
   get '/error', to: 'main#error'
-  get '/error', to: 'main#sin_permiso'
   post 'users/votar_pregunta', to: 'users#votar_pregunta'
   post 'users/votar_respuesta', to: 'users#votar_respuesta'
+  get '/error_no_permisos', to: 'main#sin_permiso'
   root :to => 'questions#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

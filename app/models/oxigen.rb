@@ -1,0 +1,2 @@
+class Oxigen < ApplicationRecord
+end

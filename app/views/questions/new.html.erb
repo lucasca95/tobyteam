@@ -1,12 +1,21 @@
-<%= form_for(@question) do |f| %>
-	<%= f.label :title %>
+<div class="panel panel-default devise-bs">
+  <div class="panel-heading">
+ <div class="form-group">
+ <%= form_for(@question) do |f| %>
+	<%= f.label :"Titulo de Pregunta" %>
 	<%= f.text_field :title %>
+</div>	
 	<br>
-	<%= f.label :body %>
+<div class="form-group">
+	<%= f.label :"Cuerpo de la Pregunta" %>
 	<%= f.text_area :body %>
+</div>	
 	<br>
+<div class="form-group">	
 	<%= f.label :labels %>
 	<%= f.collection_check_boxes :label_ids,@all_labels,:id,:title %>
+</div>
 	<br>
-	<%= f.submit 'Enviar' %>
+	<%= f.submit 'Crear Pregunta', class: 'btn btn-primary btn-lg' %>
 <% end %>
+</div></div>

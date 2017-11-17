@@ -9,13 +9,15 @@
 					<% @voto = @question.votes.where(user: current_user).first%> 
 
 					<% if @voto.nil? %> 
-						<%=button_to "+", :controller => '/users', method: :true, :action => :votar_pregunta, :params => @datosp%> 
-						<%=button_to "-", :controller => '/users', method: :true, :action => :votar_pregunta, :params => @datosn%>
+						<%= link_to "", users_votar_pregunta_path(@datosp) ,method: :post, class:"btn btn-default glyphicon glyphicon glyphicon-thumbs-up "%>
+						<%= link_to "", users_votar_pregunta_path(@datosn) ,method: :post, class:"btn btn-default glyphicon glyphicon glyphicon-thumbs-down "%>
 					<% else %>
 						<% if !@voto.like %> 
-							<%=button_to "+", :controller => '/users', method: :true, :action => :votar_pregunta, :params => @datosp%> 
+							<%= link_to "", users_votar_pregunta_path(@datosp) ,method: :post, class:"btn btn-default glyphicon glyphicon glyphicon-thumbs-up", type:"button"%>
+							<%= link_to "", users_votar_pregunta_path(@datosn) ,method: :post, class:"btn btn-default glyphicon glyphicon glyphicon-thumbs-down", type:"button",disabled: true %>
 						<% else %>
-							<%=button_to "-", :controller => '/users', method: :true, :action => :votar_pregunta, :params => @datosn%>
+							<%= link_to "", users_votar_pregunta_path(@datosp) ,method: :post, class:"btn btn-default glyphicon glyphicon glyphicon-thumbs-up", type:"button",disabled: true%>
+							<%= link_to "", users_votar_pregunta_path(@datosn) ,method: :post, class:"btn btn-default glyphicon glyphicon glyphicon-thumbs-down", type:"button"%>
 						<% end %>
 					<% end %>
 

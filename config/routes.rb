@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'bug/show'
-  root :to 'bug#show'
+    resources :bug
+  root :to => 'bug#show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

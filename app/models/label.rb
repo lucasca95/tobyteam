@@ -4,6 +4,7 @@ class Label < ApplicationRecord
 	#Validaciones
 		validates :title,
 			presence: true
-		validates :active,
-			presence: true
+		validates :title,
+			uniqueness: true
+
 end

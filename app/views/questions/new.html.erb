@@ -12,8 +12,9 @@
 </div>	
 	<br>
 <div class="form-group">	
-	<%= f.label :labels %>
+	<%= f.label :Etiquetas %>
 	<%= f.collection_check_boxes :label_ids,@all_labels,:id,:title %>
+
 </div>
 	<br>
 	<%= f.submit 'Crear Pregunta'%>

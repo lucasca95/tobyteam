@@ -18,5 +18,7 @@ Rails.application.routes.draw do
   post 'users/votar_pregunta', to: 'users#votar_pregunta'
   post 'users/votar_respuesta', to: 'users#votar_respuesta'
   get '/error_no_permisos', to: 'main#sin_permiso'
+  get '/error_no_se_pudo_guardar', to: 'main#no_se_pudo_guardar'
+
   root :to => 'questions#index'
 end

@@ -28,10 +28,14 @@ class QuestionsController < ApplicationController
     @q.user = current_user
     
     if ((@q.label_ids.length>0) and (@q.label_ids.length<6))
+
       if @q.save 
         redirect_to questions_path
-      else redirect_to :controller => 'main', :action => 'error'
+      else 
+        
+        redirect_to :controller => 'main', :action => 'no_se_pudo_guardar'
       end
+     
     else redirect_to :controller => 'main', :action => 'error'
     end
        

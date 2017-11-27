@@ -4,7 +4,7 @@
 	<td colspan="3"  >
 		<table class="table " style="border-width: 3px;border: solid; border-color:  #257d9e ;" >
 			<tr style="border-width: 3px;border: solid; border-color:  #257d9e ;">
-				<td rowspan="1"  style="border-width: 3px;border: solid; border-color:  #257d9e ;"><%=answer.user.name%><br>
+				<td rowspan="1"  style="border-width: 3px;border: solid; border-color:  #257d9e ;"><%=link_to answer.user.name, answer.user%><br>
 					<% @datosp = { 	answer:answer,like: true}%>
 					<% @datosn = { 	answer:answer,like: false}%> 
 					<% @voto = answer.votes.where(user: current_user).first%> 

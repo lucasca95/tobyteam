@@ -1,2 +1,71 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>Mi perfil</h1>
+<br><br>
+
+<table class="table">
+<thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Universidad</th>
+  </tr>
+</thead>
+  <tbody>
+  <tr>
+    <td><%=@usuario.name%></td>
+    <td><%=@usuario.lastname%></td>
+    <td><%=@usuario.university.name%></td>
+  </tr>  
+  </tbody>
+</table>
+
+<table class="table">
+<thead>
+  <tr>
+    <th>Nivel</th>
+    <th>Mis puntos</th>
+  </tr>
+</thead>
+  <tbody>
+  <tr>
+    <td><%=@usuario.level.name%></td>
+    <td><%=@usuario.points%></td>
+  </tr>  
+  </tbody>
+</table>
+
+<table class="table">
+<thead>
+  <tr>
+    <th>E-mail</th>
+    <th>Contraseña</th>
+  </tr>
+</thead>
+  <tbody>
+  <tr>
+    <td><%=@usuario.email%></td>
+    <td><%='XXXXXX'%></td>
+  </tr>  
+  </tbody>
+</table>
+
+<%if (@usuario.id == @usuario_actual.id)%>
+  
+  <table class="table table-hover table-bordered" style="border-width: 5px;border: solid; border-color:  #000000 ;">
+<thead>
+  <tr style="border-width: 5px;border: solid; border-color:  #000000 ;">
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Titulo</th>
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Cuerpo</th>
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Usuario</th>
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Fecha</th>
+  </tr>
+</thead>
+  
+  <tbody style="border-width: 5px;border: solid; border-color:  #000000 ;">
+  
+    <%= render :partial => "myQuestions", :collection => @myQuestions %>
+
+ </tbody>
+</table>
+    
+  
+<%end%>

@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   get '/error_no_permisos', to: 'main#sin_permiso'
   get '/error_no_se_pudo_guardar', to: 'main#no_se_pudo_guardar'
   post 'users/actualizar_nivel', to: 'users#actualizar_nivel'
+  post 'questions/set_best', to: 'questions#set_best'
   root :to => 'questions#index'
 end

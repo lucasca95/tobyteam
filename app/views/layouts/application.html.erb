@@ -33,9 +33,12 @@
       <li><%= link_to "Ver Preguntas" , questions_path %></li>
       <li><a href="/labels">Ver Etiquetas</a></li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          Administrar <b class="caret"></b>
-        </a>
+
+          <% if !(current_user.nil?) && !(current_user.level.actions.where(name: "Administrar").first.nil?) %>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Administrar <b class="caret"></b>
+            </a>
+          <% end %>
         <ul class="dropdown-menu">
 
           <li><%= link_to "Crear Facultad", :controller => '/questions', :action => :new %></li>
@@ -63,7 +66,7 @@
             <a href="/users/sign_in" type="button" class="btn btn-success" ><%= current_user.name + " " + current_user.lastname %></a>
             <%= link_to "Me quiero ir!", destroy_user_session_path,method: :delete, class:"btn btn-danger", type:"button"%>
              <%= link_to "Ver Perfil", user_path(current_user.id) ,method: :get, class:"btn btn-warning", type:"button"%>
-             <% if current_user.name=="roberto" and current_user.lastname=="giordano" %>
+             <% if current_user.email=="giordano@educanding.com" %>
              <%= link_to "Calculadora de Oxigeno", oxigens_path ,method: :get, class:"btn btn-danger", type:"button"%>
              <% end %>
       <% else %>

@@ -7,4 +7,6 @@ class Label < ApplicationRecord
 		validates :title,
 			uniqueness: true
 
+	default_scope ->{order("title")}
+
 end

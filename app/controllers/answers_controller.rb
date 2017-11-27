@@ -20,9 +20,9 @@ class AnswersController < ApplicationController
       @answer.user = current_user
       
     if @answer.save
-      redirect_to @answer.question
+      redirect_to @answer.question, :notice => '¡Respuesta agregada con éssito!'
     else
-      redirect_to :controller => 'main', :action => 'error'
+      redirect_to @answer.question, :alert => 'Error. Completar campo de respuesta.'
     end
 
   end

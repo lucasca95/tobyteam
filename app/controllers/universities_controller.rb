@@ -9,6 +9,7 @@ class UniversitiesController < ApplicationController
   end
 
   def index
+    @lista_facultades = University.all
   end
 
   def create

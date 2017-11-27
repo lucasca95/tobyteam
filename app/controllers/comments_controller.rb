@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
     if @comment.save
         redirect_to @comment.commentable
     else
-      redirect_to :controller => 'main', :action => 'error'
+      redirect_to @comment.commentable, :alert => @comment.errors.messages[:title]
     end
 
   end

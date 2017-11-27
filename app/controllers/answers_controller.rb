@@ -22,7 +22,7 @@ class AnswersController < ApplicationController
     if @answer.save
       redirect_to @answer.question
     else
-      redirect_to :controller => 'main', :action => 'error'
+      redirect_to @answer.question, :alert => @answer.errors.messages[:title]
     end
 
   end

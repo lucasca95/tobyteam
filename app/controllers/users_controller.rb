@@ -22,6 +22,14 @@ class UsersController < ApplicationController
   def destroy
   end
 
+  def actualizar_nivel(user)
+    @level = Level.where("points <= #{user.points} ").order(points: :desc).first
+    if (user.level.id != @level.id)
+        user.level_id = @level.id
+        user.save
+    end
+  end
+
   def votar_pregunta 
     @id = params[:question]
     @q = Question.find(@id)
@@ -92,6 +100,7 @@ class UsersController < ApplicationController
         end
       end
     end
+    actualizar_nivel(current_user)
   end
 
   def votar_respuesta
@@ -164,5 +173,6 @@ class UsersController < ApplicationController
         end
       end
     end
+    actualizar_nivel(current_user)
   end
 end

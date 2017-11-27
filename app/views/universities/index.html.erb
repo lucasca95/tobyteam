@@ -1,2 +1,21 @@
-<h1>Universities#index</h1>
-<p>Find me in app/views/universities/index.html.erb</p>
+<h1>Listado de universidades</h1>
+<br><br>
+
+<table class="table">
+<thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Provincia</th>
+    <th>URL</th>
+  </tr>
+</thead>
+  <% @lista_facultades.each do |v| %>
+  <tbody>
+  <tr>
+    <td><%=v.name%></td>
+    <td><%=v.province%></td>
+    <td><%=v.url%></td>
+  </tr>
+  <%end%>
+  </tbody>
+</table>

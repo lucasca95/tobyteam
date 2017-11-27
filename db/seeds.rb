@@ -139,7 +139,9 @@ pregunta_1=Question.find_or_create_by(title: "¿Que hace Ruby?", body: "Serian t
 pregunta_1.labels << etiqueta_ingenieria
 puts "Creo Respuesta"
 Answer.find_or_create_by(body: "La verdad que preguntaste cualquier cosa", user_id: 2, question_id:1)
-
+ans1 = Answer.find_or_create_by(body: "La verdad que preguntaste cualquier cosa2", user_id: 3, question_id:1)
+pregunta_1.answer = ans1
+pregunta_1.save
 puts "Creo Comentarios"
 Comment.find_or_create_by(body: "Ruby no hace nada", user_id: 2, commentable_id: 1, commentable_type: "Question")
 Comment.find_or_create_by(body: "Tu respuesta fue algo ofensiva, no te parece?", user_id: 1, commentable_id: 1, commentable_type: "Answer")

@@ -46,4 +46,14 @@ class QuestionsController < ApplicationController
 
   def destroy
   end
+
+  def set_best
+    answer = Answer.find(params[:answer])
+    question = Question.find(params[:question])
+    if answer.question.id == question.id
+      question.answer = answer
+      question.save  
+    end
+    redirect_to question
+  end
 end

@@ -3,7 +3,7 @@
 	<td ></td>
 	<td colspan="3"  >
 		<table class="table " style="border-width: 3px;border: solid; border-color:  #257d9e ;" >
-			<tr style="border-width: 3px;border: solid; border-color:  #257d9e ;">
+			<tr >
 				<td rowspan="1"  style="border-width: 3px;border: solid; border-color:  #257d9e ;"><%=answer.user.name%><br>
 					<% @datosp = { 	answer:answer,like: true}%>
 					<% @datosn = { 	answer:answer,like: false}%> 
@@ -40,8 +40,18 @@
 						<% end %>
 					<% end %>
 
-				<td colspan="3"><%=answer.body%></td>
+				<td colspan="3" rowspan="2" style="border-width: 3px;border: solid; border-color:  #257d9e ;"><%=answer.body%></td>
 
+			</tr>
+			<tr>
+				<td>
+					<% if @question.answer.id == answer.id %>
+						 Esta es la mejor respuesta 
+					<% else %>
+						<% @best = { 	question:@question,answer: answer}%>
+						 <%= link_to "Marcar Mejor Respuesta" , questions_set_best_path(@best), method: :post %> 
+					<% end %>
+				</td>
 			</tr>
 			<%= render :partial => "comment", :collection => answer.comments %>
 			<tr  style="border-width: 3px;border: solid; border-color:  #257d9e ;">

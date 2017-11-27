@@ -23,10 +23,12 @@ class UsersController < ApplicationController
   end
 
   def actualizar_nivel(user)
-    @level = Level.where("points <= #{user.points} ").order(points: :desc).first
-    if (user.level.id != @level.id)
-        user.level_id = @level.id
-        user.save
+    @level = Level.actualizar.where("points <= #{user.points} ").first
+    if (!@level.nil?)
+        if (user.level.id != @level.id)
+            user.level_id = @level.id
+            user.save
+        end
     end
   end
 
@@ -77,7 +79,7 @@ class UsersController < ApplicationController
           @v = Vote.new
           @v.votable_id = @id
           @v.votable_type = "Question"
-          @v.like = like
+          @v.like = @like
           @v.user = current_user
           @q.user.points -= @permiso.points
         else
@@ -150,7 +152,7 @@ class UsersController < ApplicationController
           @v = Vote.new
           @v.votable_id = @id
           @v.votable_type = "Answer"
-          @v.like = like
+          @v.like =@like
           @v.user = current_user
           @q.user.points -= @permiso.points
         else

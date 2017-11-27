@@ -117,8 +117,11 @@ level_1.actions << action_25
 
 puts "Creo Etiqueta"
 etiqueta_ingenieria=Label.find_or_create_by(title: "INGENIERIA", active: true)
-etiqueta_electronica=Label.find_or_create_by(title: "ELECTRONICA", active: false)
-etiqueta_electronica=Label.find_or_create_by(title: "INFORMATICA", active: false)
+etiqueta_electronica=Label.find_or_create_by(title: "ELECTRONICA", active: true)
+etiqueta_electronica=Label.find_or_create_by(title: "INFORMATICA", active: true)
+etiqueta_electronica=Label.find_or_create_by(title: "EDUCACION", active: true)
+etiqueta_electronica=Label.find_or_create_by(title: "FISICA", active: true)
+etiqueta_electronica=Label.find_or_create_by(title: "QUIMICA", active: true)
 
 
 puts "Se crean los usuarios Lucas, Mono, Vincent"

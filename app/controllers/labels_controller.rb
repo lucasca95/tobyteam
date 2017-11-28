@@ -22,11 +22,11 @@ class LabelsController < ApplicationController
   def create
 
     @label = Label.new(params.require(:label).permit(:title, :active))
-
+    @label.title = @label.title.upcase.gsub(/[^A-Z]/, '')
     if @label.save
       redirect_to labels_path
     else
-      redirect_to :controller => 'main', :action => 'error'
+      redirect_to new_label_path, :alert => @label.errors.messages[:title]
     end
 
   end

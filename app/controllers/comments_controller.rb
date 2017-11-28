@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   def new
         @comment = Comment.new
-    @question= Question.find(1)
+        @question= Question.find(1)
   end
 
   def edit
@@ -19,9 +19,9 @@ class CommentsController < ApplicationController
       @comment.user = current_user
 
     if @comment.save
-        redirect_to @comment.commentable
+      redirect_to @comment.commentable, :notice => '¡Éxito al crear comentario!'
     else
-      redirect_to :controller => 'main', :action => 'error'
+      redirect_to @comment.commentable, :alert => @comment.errors.messages[:title]
     end
 
   end

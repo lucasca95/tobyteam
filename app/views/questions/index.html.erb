@@ -19,7 +19,7 @@
     <td style="border-width: 5px;border: solid; border-color:  #000000 ;"><FONT FACE="Comic Sans MS"><%= truncate( v.body, length: 30)%></FONT>></td>
 
 
-    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"> <%=v.user.name%></td>
+    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"> <%= link_to v.user.email ,v.user%></td>
 
     <td style="border-width: 5px;border: solid; border-color:  #000000 ;"><%=v.created_at.strftime("%Y-%m-%d")%></td>
   </tr>

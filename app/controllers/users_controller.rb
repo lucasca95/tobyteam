@@ -7,6 +7,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    @usuario=User.find(params[:id])
+    @usuario_actual=current_user
+    @myQuestions=@usuario_actual.questions
   end
 
   def index
@@ -20,6 +23,16 @@ class UsersController < ApplicationController
   end
 
   def destroy
+  end
+
+  def actualizar_nivel(user)
+    @level = Level.actualizar.where("points <= #{user.points} ").first
+    if (!@level.nil?)
+        if (user.level.id != @level.id)
+            user.level_id = @level.id
+            user.save
+        end
+    end
   end
 
   def votar_pregunta 
@@ -69,7 +82,7 @@ class UsersController < ApplicationController
           @v = Vote.new
           @v.votable_id = @id
           @v.votable_type = "Question"
-          @v.like = like
+          @v.like = @like
           @v.user = current_user
           @q.user.points -= @permiso.points
         else
@@ -92,6 +105,7 @@ class UsersController < ApplicationController
         end
       end
     end
+    actualizar_nivel(current_user)
   end
 
   def votar_respuesta
@@ -141,7 +155,7 @@ class UsersController < ApplicationController
           @v = Vote.new
           @v.votable_id = @id
           @v.votable_type = "Answer"
-          @v.like = like
+          @v.like =@like
           @v.user = current_user
           @q.user.points -= @permiso.points
         else
@@ -164,5 +178,6 @@ class UsersController < ApplicationController
         end
       end
     end
+    actualizar_nivel(current_user)
   end
 end

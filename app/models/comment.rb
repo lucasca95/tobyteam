@@ -4,4 +4,10 @@ class Comment < ApplicationRecord
   has_many :reports, :as => :reportable
   belongs_to :commentable, :polymorphic => true
 
+  #Validaciones
+	validates :body,
+	presence: true
+	validates :body,
+	length: { minimum: 0, maximum: 250 }
+
 end

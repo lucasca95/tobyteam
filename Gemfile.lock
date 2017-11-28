@@ -73,6 +73,7 @@ GEM
       responders
       warden (~> 1.2.3)
     devise-bootstrap-views (0.0.11)
+    devise-i18n-views (0.3.7)
     erubi (1.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -215,6 +216,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise (~> 4.3)
   devise-bootstrap-views
+  devise-i18n-views
   hirb
   jbuilder (~> 2.5)
   jquery-rails

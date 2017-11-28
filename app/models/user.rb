@@ -32,4 +32,20 @@ class User < ApplicationRecord
     #level_id
     validates :level_id, presence: true
     validates :level_id, numericality: true
+    def update_level()
+      @level = Level.actualizar.where("points <= #{self.points} ").first
+      if (!@level.nil?)
+          if (self.level.id != @level.id)
+              self.level_id = @level.id
+              self.save
+          end
+      end
+    end
+    def permit(action) #accion como string
+      return (self.level.actions.where(name: "#{action}").first != nil)
+    end
+    def add_points (points)
+      self.points += points
+      update_level
+    end
 end

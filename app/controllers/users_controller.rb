@@ -25,159 +25,55 @@ class UsersController < ApplicationController
   def destroy
   end
 
-  def actualizar_nivel(user)
-    @level = Level.actualizar.where("points <= #{user.points} ").first
-    if (!@level.nil?)
-        if (user.level.id != @level.id)
-            user.level_id = @level.id
-            user.save
-        end
-    end
-  end
-
   def votar_pregunta 
-    @id = params[:question]
-    @q = Question.find(@id)
-    @like = params[:like]
-    if (@like == "true")
-      @permiso = current_user.level.actions.where(name: "Votar Pregunta Positivo").first
-      if @permiso.nil?
-        redirect_to :controller => 'main', :action => 'sin_permiso'
+    q = Question.find(params[:question])
+    like = params[:like]
+    if like
+      if current_user.permit("Votar Pregunta Positivo")
+        if !(q.vote(like, current_user))
+          redirect_to q, :alert => "Error al guardar los cambios"
+        else
+          redirect_to q
+        end
       else
-        @v = Vote.where(votable_id: params[:question],votable_type:"Question",user:current_user ).first
-        if @v.nil?    
-          @v = Vote.new
-          @v.votable_id = @id
-          @v.votable_type = "Question"
-          @v.like = @like
-          @v.user = current_user
-          @q.user.points += @permiso.points
-        else
-          @v.like = @like
-          current_user.points += @permiso.points
-          @q.user.points += 2*@permiso.points
-        end
-        if @v.save
-          if @q.user.save
-            if @current_user.save
-              redirect_to @q
-            else
-              redirect_to :controller => 'main', :action => 'error'
-            end
-          else
-            redirect_to :controller => 'main', :action => 'error'
-          end
-        else
-          redirect_to :controller => 'main', :action => 'error'
-        end
-
+         redirect_to q, :alert => "No tiene Permisos"
       end
-    else 
-      @permiso = current_user.level.actions.where(name: "Votar Pregunta Negativo").first
-      if @permiso.nil?
-        redirect_to :controller => 'main', :action => 'sin_permiso'
-      else
-        @v = Vote.where(votable_id: params[:question],votable_type:"Question",user:current_user ).first
-        if @v.nil?   
-          @v = Vote.new
-          @v.votable_id = @id
-          @v.votable_type = "Question"
-          @v.like = @like
-          @v.user = current_user
-          @q.user.points -= @permiso.points
-        else
-          @v.like = @like
-          current_user.points -= @permiso.points
-          @q.user.points -= 2*@permiso.points
-        end
-        if @v.save
-          if @q.user.save
-            if @current_user.save
-              redirect_to @q
-            else
-              redirect_to :controller => 'main', :action => 'error'
-            end
+    else
+        if current_user.permit("Votar Pregunta Negativo")
+          if !(q.vote(like, current_user))
+            redirect_to q, :alert => "Error al guardar los cambios"
           else
-            redirect_to :controller => 'main', :action => 'error'
+            redirect_to q
           end
-        else
-          redirect_to :controller => 'main', :action => 'error'
-        end
+      else
+         redirect_to q, :alert => "No tiene Permisos"
       end
     end
-    actualizar_nivel(current_user)
   end
 
   def votar_respuesta
-    @id = params[:answer]
-    @q = Answer.find(@id)
-    @like = params[:like]
-    if (@like == "true")
-      @permiso = current_user.level.actions.where(name: "Votar Respuesta Positivo").first
-      if @permiso.nil?
-        redirect_to :controller => 'main', :action => 'sin_permiso'
+    a = Answer.find(params[:answer])
+    like = params[:like]
+    if like
+      if current_user.permit("Votar Respuesta Positivo")
+        if !(a.vote(like, current_user))
+          redirect_to a.question, :alert => "Error al guardar los cambios"
+        else
+          redirect_to a.question
+        end
       else
-        @v = Vote.where(votable_id: params[:answer],votable_type:"Answer",user:current_user ).first
-        if @v.nil?    
-          @v = Vote.new
-          @v.votable_id = @id
-          @v.votable_type = "Answer"
-          @v.like = @like
-          @v.user = current_user
-          @q.user.points += @permiso.points
-        else
-          @v.like = @like
-          current_user.points += @permiso.points
-          @q.user.points += 2*@permiso.points
-        end
-        if @v.save
-          if @q.user.save
-            if @current_user.save
-              redirect_to @q
-            else
-              redirect_to :controller => 'main', :action => 'error'
-            end
-          else
-            redirect_to :controller => 'main', :action => 'error'
-          end
-        else
-          redirect_to :controller => 'main', :action => 'error'
-        end
-
+         redirect_to a.question, :alert => "No tiene Permisos"
       end
-    else 
-      @permiso = current_user.level.actions.where(name: "Votar Respuesta Negativo").first
-      if @permiso.nil?
-        redirect_to :controller => 'main', :action => 'sin_permiso'
-      else
-        @v = Vote.where(votable_id: params[:answer],votable_type:"Answer",user:current_user ).first
-        if @v.nil?   
-          @v = Vote.new
-          @v.votable_id = @id
-          @v.votable_type = "Answer"
-          @v.like =@like
-          @v.user = current_user
-          @q.user.points -= @permiso.points
-        else
-          @v.like = @like
-          current_user.points -= @permiso.points
-          @q.user.points -= 2*@permiso.points
-        end
-        if @v.save
-          if @q.user.save
-            if @current_user.save
-              redirect_to @q
-            else
-              redirect_to :controller => 'main', :action => 'error'
-            end
+    else
+        if current_user.permit("Votar Respuesta Negativo")
+          if !(a.vote(like, current_user))
+            redirect_to a.question, :alert => "Error al guardar los cambios"
           else
-            redirect_to :controller => 'main', :action => 'error'
+            redirect_to a.question
           end
-        else
-          redirect_to :controller => 'main', :action => 'error'
-        end
+      else
+         redirect_to a.question, :alert => "No tiene Permisos"
       end
     end
-    actualizar_nivel(current_user)
   end
 end

@@ -1,39 +1,41 @@
 <tr >
 
 <td colspan="4" >
-		<table class="table table-hover table-bordered" style="border-width: 3px;border: solid; border-color:  #257d9e ;">
-			<tr class="danger" >
-				<td  rowspan="2" style="border-width: 3px;border: solid; border-color:  #257d9e ;"><%=link_to @question.user.name, @question.user %><br>
+
+		<table class="table table-hover table-bordered table-responsive" style="border-width: 3px;border: solid; border-color:  #257d9e ;">
+			<tr class="danger"  >
+				<td  rowspan="2" style="border-width: 3px;border: solid; border-color:  #257d9e ; width: 100px"><%=link_to @question.user.name, @question.user %><br>
+
 					<% @datosp = { 	question:@question,like: :true}%>
 					<% @datosn = { 	question:@question,like: :false}%> 
 					<% @voto = @question.votes.where(user: current_user).first%> 
 
 					<% if @voto.nil? %> 
 						<table class="table table-hover table-sm table-responsive" >
-							<tr style="max-width: 52px" >
-								<td style="max-width: 13px"><%= link_to "", users_votar_pregunta_path(@datosp) ,method: :post, class:"btn btn-default glyphicon glyphicon-thumbs-up "%></td>
-						<td style="max-width: 8px"><span class="badge badge-light"><%=question.votes.where(like: true).count %></span></td>
-								<td style="max-width: 13px"><%= link_to "", users_votar_pregunta_path(@datosn) ,method: :post, class:"btn btn-default glyphicon glyphicon-thumbs-down "%></td>
-								<td style="max-width: 8px"><span class="badge badge-light"><%=question.votes.where(like: false).count %></span></td>
+							<tr  >
+								<td style="width: auto;"><%= link_to "", users_votar_pregunta_path(@datosp) ,method: :post, class:"btn btn-success glyphicon glyphicon-thumbs-up "%></td>
+						<td style="width: auto;"><span class="badge badge-light"><%=question.votes.where(like: true).count %></span></td>
+								<td style="width: auto;"><%= link_to "", users_votar_pregunta_path(@datosn) ,method: :post, class:"btn btn-danger glyphicon glyphicon-thumbs-down "%></td>
+								<td style="width: auto;"><span class="badge badge-light"><%=question.votes.where(like: false).count %></span></td>
 							</tr>
 						</table>
 					<% else %>
 						<% if !@voto.like %> 
 							<table class="table table-hover table-sm table-responsive">
-							<tr style="max-width: 52px">
-								<td style="max-width: 13px"><%= link_to "", users_votar_pregunta_path(@datosp) ,method: :post, class:"btn btn-success glyphicon glyphicon-thumbs-up"%></td>
-						<td style="max-width: 8px"><span class="badge badge-light"><%=question.votes.where(like: true).count %></span></td>
-								<td style="max-width: 13px"><%= link_to "", users_votar_pregunta_path(@datosn) ,method: :post, class:"btn btn-danger glyphicon glyphicon-thumbs-down", disabled: :true %></td>
-								<td style="max-width: 8px"><span class="badge badge-light"><%=question.votes.where(like: false).count %></span></td>
+							<tr >
+								<td style="width: auto;"><%= link_to "", users_votar_pregunta_path(@datosp) ,method: :post, class:"btn btn-success glyphicon glyphicon-thumbs-up"%></td>
+						<td style="width: auto;"><span class="badge badge-light"><%=question.votes.where(like: true).count %></span></td>
+								<td style="width: auto;"><%= link_to "", users_votar_pregunta_path(@datosn) ,method: :post, class:"btn btn-danger glyphicon glyphicon-thumbs-down", disabled: :true %></td>
+								<td style="width: auto;"><span class="badge badge-light"><%=question.votes.where(like: false).count %></span></td>
 							</tr>
 						</table>
 						<% else %>
 							<table class="table table-hover  table-sm table-responsive">
-							<tr style="max-width: 52px">
-								<td style="max-width: 13px"><%= link_to "", users_votar_pregunta_path(@datosp) ,method: :post, class:"btn btn-success glyphicon glyphicon-thumbs-up", disabled: :true%></td>
-						<td style="max-width: 8px"><span class="badge badge-light"><%=question.votes.where(like: true).count %></span></td>
-								<td style="max-width: 13px"><%= link_to "", users_votar_pregunta_path(@datosn) ,method: :post, class:"btn btn-danger glyphicon glyphicon-thumbs-down" %></td>
-					<td style="max-width: 8px"><span class="badge badge-light"><%=question.votes.where(like: false).count %></span></td>
+							<tr >
+								<td style="width: auto;"><%= link_to "", users_votar_pregunta_path(@datosp) ,method: :post, class:"btn btn-success glyphicon glyphicon-thumbs-up", disabled: :true%></td>
+						<td style="width: auto;"><span class="badge badge-light"><%=question.votes.where(like: true).count %></span></td>
+								<td style="width: auto;"><%= link_to "", users_votar_pregunta_path(@datosn) ,method: :post, class:"btn btn-danger glyphicon glyphicon-thumbs-down" %></td>
+					<td style="width: auto;"><span class="badge badge-light"><%=question.votes.where(like: false).count %></span></td>
 							</tr>
 						</table>
 						<% end %>

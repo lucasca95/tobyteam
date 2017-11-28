@@ -125,9 +125,10 @@ etiqueta_electronica=Label.find_or_create_by(title: "QUIMICA", active: true)
 
 
 puts "Se crean los usuarios Lucas, Mono, Vincent"
-User.create(name: "Lucas", lastname: "Camino", email: "lucas@cfc.com", password:"12345678", points: 10, university_id: 1, level_id: 2)
-User.create(name: "Lihuen", lastname: "Figueroa", email: "mono@cfc.com", password:"12345678", points: 10, university_id: 3, level_id: 2)
-User.create(name: "Vincent", lastname: "Corrao", email: "santi@cfc.com", password:"12345678", points: 10, university_id: 1, level_id: 2)
+
+User.create(name: "Lucas", lastname: "Camino", email: "lucas@cfc.com", password:"12345678", points: 99999, university_id: 1, level_id: 2)
+User.create(name: "Lihuen", lastname: "Figueroa", email: "mono@cfc.com", password:"12345678", points: 99999, level_id: 2)
+User.create(name: "Vincent", lastname: "Corrao", email: "santi@cfc.com", password:"12345678", points: 99999, university_id: 1, level_id: 2)
 User.create(name: "Giordano", lastname: "Oxygen", email: "giordano@educanding.com", password:"12345678", points: 10, level_id: 1)
 User.create(name: "Martin", lastname: "Galan", email: "martingalan@gmail.com", password:"12345678", points: 10, university_id: 3,level_id: 3)
 

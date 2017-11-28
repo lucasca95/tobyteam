@@ -12,11 +12,11 @@
 					<% @voto = answer.votes.where(user: current_user).first%> 
 
 					<% if @voto.nil? %> 
-						<table class="table table-hover table-sm table-responsive" >
-							<tr style="max-width: 52px" >
-								<td style="max-width: 13px"><%= link_to "", users_votar_respuesta_path(@datosp) ,method: :post, class:"btn btn-default glyphicon glyphicon-thumbs-up "%></td>
+						<table class="table table-hover table-sm table-responsive">
+							<tr style="max-width: 52px">
+								<td style="max-width: 13px"><%= link_to "", users_votar_respuesta_path(@datosp) ,method: :post, class:"btn btn-success glyphicon glyphicon-thumbs-up"%></td>
 						<td style="max-width: 8px"><span class="badge badge-light"><%=answer.votes.where(like: true).count %></span></td>
-								<td style="max-width: 13px"><%= link_to "", users_votar_respuesta_path(@datosn) ,method: :post, class:"btn btn-default glyphicon glyphicon-thumbs-down "%></td>
+								<td style="max-width: 13px"><%= link_to "", users_votar_respuesta_path(@datosn) ,method: :post, class:"btn btn-danger glyphicon glyphicon-thumbs-down" %></td>
 								<td style="max-width: 8px"><span class="badge badge-light"><%=answer.votes.where(like: false).count %></span></td>
 							</tr>
 						</table>

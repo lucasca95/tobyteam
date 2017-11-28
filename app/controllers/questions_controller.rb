@@ -50,10 +50,8 @@ class QuestionsController < ApplicationController
   def set_best
     answer = Answer.find(params[:answer])
     question = Question.find(params[:question])
-    if answer.question.id == question.id
-      question.answer = answer
-      question.save  
-    end
+    question.set_best(answer)
     redirect_to question
   end
+
 end

@@ -16,4 +16,22 @@ class Level < ApplicationRecord
 		uniqueness: true
 	scope :puntos,-> {order("points")}
  	scope :actualizar,-> {order("points desc")}
+ 	def delete
+ 		if self.users.count == 0
+ 			self.destroy
+ 			return true
+ 		else
+ 			if self.id == Level.puntos.first
+ 				return false
+ 			else
+ 				previous = Level.actualizar.where("points < #{self.points}").first
+ 				self.users.each do |u|  
+ 					u.level_id = previous.id
+ 					u.save
+ 				end
+ 				self = Level.find(self.id)
+ 				self.delete
+ 			end
+ 		end
+ 	end
 end

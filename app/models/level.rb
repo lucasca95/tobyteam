@@ -1,5 +1,5 @@
 class Level < ApplicationRecord
-	has_many :user
+	has_many :users
 	has_and_belongs_to_many :actions
 
 	#Validaciones
@@ -17,11 +17,11 @@ class Level < ApplicationRecord
 	scope :puntos,-> {order("points")}
  	scope :actualizar,-> {order("points desc")}
  	def delete
- 		if self.users.count == 0
+ 		if (self.users.count == 0)
  			self.destroy
  			return true
  		else
- 			if self.id == Level.puntos.first
+ 			if self.id == Level.puntos.first.id
  				return false
  			else
  				previous = Level.actualizar.where("points < #{self.points}").first
@@ -29,7 +29,7 @@ class Level < ApplicationRecord
  					u.level_id = previous.id
  					u.save
  				end
- 				self = Level.find(self.id)
+ 				self.users.clear
  				self.delete
  			end
  		end

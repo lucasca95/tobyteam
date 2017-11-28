@@ -9,6 +9,7 @@ class LevelsController < ApplicationController
   end
 
   def index
+    @levels = Level.actualizar
   end
 
   def create
@@ -18,5 +19,11 @@ class LevelsController < ApplicationController
   end
 
   def destroy
+    l = Level.find(params[:id])
+    if l.delete
+      redirect_to levels_path
+    else
+      redirect_to levels_path, :alert => "Error al eliminar el nivel"
+    end
   end
 end

@@ -35,11 +35,13 @@ class User < ApplicationRecord
     def update_level()
       @level = Level.actualizar.where("points <= #{self.points} ").first
       if (!@level.nil?)
-          if (self.level.id != @level.id)
-              self.level_id = @level.id
-              self.save
-          end
+        if (self.level.id != @level.id)
+          self.level_id = @level.id
+        end
+      else
+        self.level_id = Level.actualizar.first.id
       end
+      self.save
     end
     def permit(action) #accion como string
       return (self.level.actions.where(name: "#{action}").first != nil)

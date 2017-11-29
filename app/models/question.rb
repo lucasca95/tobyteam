@@ -14,13 +14,15 @@ class Question < ApplicationRecord
 		presence: true
 	#SCOPES
 	default_scope -> { order("created_at desc") }
-
+  #Scope busqueda
+  scope: search -> (text) {where("body like '%#{text}%' or title like '%#{text}%'")}
 	 def set_best(answer)
 	    answer = Answer.find(params[:answer])
 	    if answer.question.id == self.id
 	      self.answer = answer
 	      self.save  
 	    end
+  }
   end
 
   def voted(user)

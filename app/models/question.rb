@@ -15,14 +15,23 @@ class Question < ApplicationRecord
 	#SCOPES
 	default_scope -> { order("created_at desc") }
   #Scope busqueda
-  scope: search -> (text) {where("body like '%#{text}%' or title like '%#{text}%'")}
-	 def set_best(answer)
+  #scope :search, -> (text) {where("body LIKE ? or title like ?" , "%#{text}%","%#{text}%")}
+	 
+  def self.search (text)
+    if !text.nil?
+      text = text.upcase.gsub!(' ','%')
+      return Question.where("REPLACE(UPPER(body),CHR(13),' ') LIKE ? or REPLACE(UPPER(title),CHR(13),' ') like ?" , "%#{text}%","%#{text}%")
+    else
+      return Question.all
+    end
+  end
+
+  def set_best(answer)
 	    answer = Answer.find(params[:answer])
 	    if answer.question.id == self.id
 	      self.answer = answer
 	      self.save  
 	    end
-  }
   end
 
   def voted(user)

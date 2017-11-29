@@ -19,7 +19,10 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @listaQuestions=Question.all
+    @listaQuestions=Question.search(params[:id])
+    
+    #rompe
+
   end
 
   def create
@@ -48,9 +51,8 @@ class QuestionsController < ApplicationController
   end
 
   def set_best
-    answer = Answer.find(params[:answer])
     question = Question.find(params[:question])
-    question.set_best(answer)
+    question.set_best(Answer.find(params[:answer]))
     redirect_to question
   end
 

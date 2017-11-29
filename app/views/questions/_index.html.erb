@@ -1,0 +1,11 @@
+
+  <tr style="border-width: 5px;border: solid; border-color:  #000000 ;">
+    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"><%= link_to index.title ,index%></td>
+    
+    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"><FONT FACE="Comic Sans MS"><%= truncate( index.body, length: 30)%></FONT>></td>
+
+
+    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"> <%= link_to index.user.email ,index.user%></td>
+
+    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"><%=index.created_at.strftime("%Y-%m-%d")%></td>
+      </tr>

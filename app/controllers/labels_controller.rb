@@ -1,8 +1,7 @@
 class LabelsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   def new
-    accion=current_user.level.actions.where(name:"Crear Etiqueta").first
-    if !( accion.nil? )
+    if ( current_user.permit("Administrar") )
       @label = Label.new
     else
       redirect_to :controller => 'main', :action => 'sin_permiso'

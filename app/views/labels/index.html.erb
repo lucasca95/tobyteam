@@ -11,8 +11,7 @@
   <% @lista_labels.each do |v| %>
   <tbody>
   <tr>
-    <td><%=v.title%></td>
-    
+    <td><%= link_to v.title , v%></td>
     <td><%=v.active%></td>
 
   </tr>

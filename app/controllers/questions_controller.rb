@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @listaQuestions=Question.search(params[:id])
+    @listaQuestions=Question.search(params[:id2])
     
     #rompe
 

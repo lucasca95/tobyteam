@@ -18,8 +18,9 @@ class Question < ApplicationRecord
  
   def self.search (text)
     if !text.nil?
-      text = text.upcase.gsub!(' ','%')
-      return Question.where("REPLACE(UPPER(body),CHR(13),' ') LIKE ? or REPLACE(UPPER(title),CHR(13),' ') like ?" , "%#{text}%","%#{text}%")
+      text = text.upcase.gsub(' ','%')
+      q = Question.where("REPLACE(UPPER(body),CHR(13),' ') LIKE ? or REPLACE(UPPER(title),CHR(13),' ') like ?" , "%#{text}%","%#{text}%")
+      return q
     else
       return Question.all
     end

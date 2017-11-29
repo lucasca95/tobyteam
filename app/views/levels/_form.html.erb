@@ -1,0 +1,9 @@
+<%= form_for @level do |f| %>
+	<%= f.label :"Nombre del nivel: " %>
+	<%= f.text_field :name, required: true, placeholder: 'Ingrese nombre' %>
+	<br>
+	<%= f.label :"Puntos del nivel:  " %>
+	<%= f.number_field :points, required: true, placeholder: 'Ingrese puntos' %>
+	<br>
+	<%= f.submit 'Guardar' %>
+<% end %>

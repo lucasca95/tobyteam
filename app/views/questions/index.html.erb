@@ -10,19 +10,9 @@
     <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Fecha</th>
   </tr>
 </thead>
-  <% @listaQuestions.each do |v| %>
   <tbody style="border-width: 5px;border: solid; border-color:  #000000 ;">
-
-  <tr style="border-width: 5px;border: solid; border-color:  #000000 ;">
-    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"><%= link_to v.title ,v%></td>
-    
-    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"><FONT FACE="Comic Sans MS"><%= truncate( v.body, length: 30)%></FONT>></td>
+  <%= render :partial => "index", :collection => @listaQuestions %>
 
 
-    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"> <%= link_to v.user.email ,v.user%></td>
-
-    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"><%=v.created_at.strftime("%Y-%m-%d")%></td>
-  </tr>
-  <%end%>
   </tbody>
 </table>

@@ -1,4 +1,19 @@
 <h1>Listado de preguntas que contienen etiqueta seleccionada</h1>
 <br><br>
 
-<%= render :partial => '/question/index' , :collection => @label.questions %>
+	
+<table class="table table-hover table-bordered" style="border-width: 5px;border: solid; border-color:  #000000 ;">
+<thead>
+  <tr style="border-width: 5px;border: solid; border-color:  #000000 ;">
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Titulo</th>
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Cuerpo</th>
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Usuario</th>
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Fecha</th>
+  </tr>
+</thead>
+  <tbody style="border-width: 5px;border: solid; border-color:  #000000 ;">
+  <%= render :partial => '/questions/index' , :collection => @label.questions %>
+
+
+  </tbody>
+</table>

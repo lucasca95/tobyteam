@@ -12,6 +12,7 @@ class LabelsController < ApplicationController
   end
 
   def show
+    @label=Label.find(params[:id])
   end
 
   def index

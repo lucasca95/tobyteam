@@ -94,8 +94,40 @@ Sobre MIGRACIONES:
 
 Sobre formularios:
 
-	(Falta experiencia para completar esta parte)
+	Se guardan en archivo aparte. (_form.html.erb)
+	Desde una vista se llaman haciendo:
+		<%= render 'form' %>
+	Adentro tienen un aspecto asi:
+	<%= form_for @nombre_variable do |f| %>
+		<%= f.label :"Nombre campo1: " %>
+		<%= f.text_field :campo1, required: true, placeholder: ‘Ingrese contenido campo1' %>
+		<%= f.label :"Nombre campo2: " %>
+		<%= f.text_field :campo2 %>
+		<%= f.submit 'Guardar' %>
+	<% end %>
 
+	Campo texto largo
+		<%= f.text_area :campo %>
+	Campo binario
+		<%= f.check_box :campo %>
+	Campo radio con múltiples opciones
+		<%= f.radio_button :sexo, 'masc', checked: true %>
+		<%= f.radio_button :sexo, 'fem' %>
+		<%= f.radio_button :sexo, 'nose' %>
+	Lista de opciones
+		<%= f.select :pais, ['Argentina', 'Brasil', 'Jamaica'] %>
+	Campo de contraseña
+		<%= f.password_field :password %>
+	Campo numerico
+		<%= f.number_field :price %>
+	Campo de ???
+	<%= f.range_field :quantity %>
+	Campo mail
+	<%= f.email_field :email %>
+	Campo URL
+	<%= f.url_field :website %>
+	Campo numero telefonico
+	<%= f.telephone_field :mobile %>
 
 
 Para loguear usuarios:

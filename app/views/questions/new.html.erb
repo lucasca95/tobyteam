@@ -1,25 +1,31 @@
 <div class="panel panel-default devise-bs">
 	<div class="panel-heading">
+		<h4>Haga una Pregunta!</h4>
+	</div>
+	<div class="panel-body">
 		<%= form_for(@question) do |f| %>
 		 <div class="form-group">
-			<%= f.label :"Titulo de Pregunta" %>
-			<%= f.text_field :title %>
+			<%= f.label :"Titulo" %>
+			<br>
+			<%= f.text_field :title , placeholder:"Ingrese aqui el Titulo"%>
 		</div>	
-		<br>
+
 		<div class="form-group">
-			<%= f.label :"Cuerpo de la Pregunta" %>
-			<%= f.text_area :body %>
-		</div>	
-		<br>
+			<%= f.label :"Cuerpo de Pregunta" %>
+			<br>
+			<%= f.text_area :body , placeholder:"Ingrese aqui el cuerpo de la pregunta",style:"width:400px;"%>
+		</div>
+
 		<div class="form-group">	
 			<%= f.label :Etiquetas %>
 			<%=f.collection_select :label_ids,@all_labels,:id,:title,{}, {multiple: true, size: 5}%>
-
 		</div>
-		<br>
+		
 		<div>
-			<%= f.submit 'Crear Pregunta'%>
+			<%= f.submit 'Crear Pregunta', class: 'btn btn-primary'%>
 		</div>
+		
 		<% end %>
+	</div>
 	</div>
 </div>

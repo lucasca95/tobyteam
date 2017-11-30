@@ -1,2 +1,0 @@
-class Etiquetum < ApplicationRecord
-end

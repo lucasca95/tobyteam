@@ -19,7 +19,14 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @listaQuestions=Question.search(params[:id2])
+    @type = params[:type]
+    case @type
+    when "1"
+      @listaQuestions=Question.unanswer
+    else
+      @listaQuestions=Question.created
+    end
+    
     
     #rompe
 

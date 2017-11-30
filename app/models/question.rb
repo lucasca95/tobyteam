@@ -13,9 +13,20 @@ class Question < ApplicationRecord
 	validates :body,
 		presence: true
 	#SCOPES
-	default_scope -> { order("created_at desc") }
+	#Dejamos de usar el por defecto porque trae problemas con el orden
+  #default_scope -> { order("created_at desc") }
   #Scope busqueda
- 
+
+  scope :created, -> {order(created_at: :desc)}
+   
+  def self.unanswer
+    select('questions.*, COUNT(answers.id) AS answers_count').
+      joins("FULL OUTER  JOIN \"answers\" ON \"answers\".\"question_id\" = \"questions\".\"id\"").                                                   
+      group('questions.id').
+      order('answers_count')
+  end
+
+############
   def self.search (text)
     if !text.nil?
       text = text.upcase.gsub(' ','%')

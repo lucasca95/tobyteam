@@ -32,7 +32,7 @@
       </div>
       <%= f.hidden_field :level_id, :value => Level.min.id %>
 
-      <%= f.hidden_field :points, :value => 0 %>
+      <%= f.hidden_field :points, :value => 1 %>
 
       <%= f.submit t('.sign_up', default: 'Sign up'), class: 'btn btn-primary' %>
     <% end %>

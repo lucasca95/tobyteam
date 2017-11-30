@@ -23,7 +23,7 @@ class Question < ApplicationRecord
     select('questions.*, COUNT(answers.id) AS answers_count').
       joins("FULL OUTER  JOIN \"answers\" ON \"answers\".\"question_id\" = \"questions\".\"id\"").                                                   
       group('questions.id').
-      order('answers_count')
+      order('answers_count').limit(15)
   end
 
 ############

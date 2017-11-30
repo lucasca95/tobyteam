@@ -10,9 +10,11 @@ class LevelsController < ApplicationController
   end
 
   def edit
+    @level = Level.find(params[:id])
   end
 
   def show
+    @level = Level.find(params[:id])
   end
 
   def index
@@ -21,7 +23,7 @@ class LevelsController < ApplicationController
 
   def create
 
-    @level = Level.new(params.require(:level).permit(:name, :points, actions: []))
+    @level = Level.new(params.require(:level).permit(:name, :points, action_ids: []))
     @level.name = @level.name.upcase.gsub(/[^A-Z]/, '')
     if @level.save
       redirect_to levels_path
@@ -32,6 +34,11 @@ class LevelsController < ApplicationController
   end
 
   def update
+    if Level.update(params.require(:level).permit(:name, :points, action_ids: []))
+      redirect_to levels_path
+    else
+      redirect_to :back , :alert => "Ocurrio un error"
+    end
   end
 
   def destroy

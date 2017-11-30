@@ -21,7 +21,7 @@ class LevelsController < ApplicationController
 
   def create
 
-    @level = Level.new(params.require(:level).permit(:name, :points))
+    @level = Level.new(params.require(:level).permit(:name, :points, actions: []))
     @level.name = @level.name.upcase.gsub(/[^A-Z]/, '')
     if @level.save
       redirect_to levels_path

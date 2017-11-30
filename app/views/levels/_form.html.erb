@@ -5,5 +5,9 @@
 	<%= f.label :"Puntos del nivel:  " %>
 	<%= f.number_field :points, required: true, placeholder: 'Ingrese puntos' %>
 	<br>
+	<%= f.label :"Permisos del nivel:  " %>
+
+<% f.input_field :actions, :collection => Action.all, :include_blank => '(All)', :multiple => true %>
+
 	<%= f.submit 'Guardar' %>
 <% end %>

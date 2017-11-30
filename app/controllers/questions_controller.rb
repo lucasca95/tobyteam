@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
     when "1"
       @listaQuestions=Question.unanswer
     else
-      @listaQuestions=Question.created
+      @listaQuestions=Question.created.search(params[:id2])
     end
     
     

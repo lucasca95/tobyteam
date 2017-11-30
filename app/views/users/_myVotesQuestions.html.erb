@@ -1,0 +1,9 @@
+<tr style="border-width: 5px;border: solid; border-color:  #000000 ;">
+    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"><%= link_to myVotesQuestions.votable.title ,myVotesQuestions.votable%></td>
+    
+    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"><FONT FACE="Comic Sans MS"><%= truncate( myVotesQuestions.votable.body, length: 30)%></FONT>></td>
+
+
+    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"> <%= myVotesQuestions.like ? "Positivo" : "Negativo" %></td>
+
+  </tr>

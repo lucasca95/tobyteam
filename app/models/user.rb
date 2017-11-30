@@ -16,12 +16,12 @@ class User < ApplicationRecord
   #Validaciones
     #nombre
     validates :name, presence: true
-    validates :name, format: { with: /\A[a-zA-Z]+\z/,
+    validates :name, format: { with: /\A([a-zA-Z]+(?: +[a-zA-Z])?)+\z/,
     message: ": sólo se permiten letras en el nombre" }
 
     #apellido
     validates :lastname, presence: true
-    validates :lastname, format: { with: /\A[a-zA-Z]+\z/,
+    validates :lastname, format: { with: /\A([a-zA-Z]+(?: +[a-zA-Z])?)+\z/,
     message: ": sólo se permiten letras en el apellido" }
 
     #points
@@ -32,6 +32,14 @@ class User < ApplicationRecord
     #level_id
     validates :level_id, presence: true
     validates :level_id, numericality: true
+
+
+    def questionsvotes
+      return self.votes.where(votable_type: "Question")
+    end
+    def answersvotes
+      return self.votes.where(votable_type: "Answers")
+    end
     def update_level()
       @level = Level.actualizar.where("points <= #{self.points} ").first
       if (!@level.nil?)

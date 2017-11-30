@@ -16,6 +16,7 @@ class Level < ApplicationRecord
 		uniqueness: true
 	scope :puntos,-> {order("points")}
  	scope :actualizar,-> {order("points desc")}
+ 	scope :min,-> {order("points").first}
  	def delete
  		if (self.users.count == 0)
  			self.destroy

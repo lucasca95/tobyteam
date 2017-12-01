@@ -15,15 +15,18 @@ class CommentsController < ApplicationController
   end
 
   def create
-      @comment = Comment.new(params.require(:comment).permit(:body, :commentable_id, :commentable_type))
-      @comment.user = current_user
+    if current_user.permit("Crear Respuesta")
+        @comment = Comment.new(params.require(:comment).permit(:body, :commentable_id, :commentable_type))
+        @comment.user = current_user
 
-    if @comment.save
-      redirect_to @comment.commentable, :notice => '¡Éxito al crear comentario!'
+      if @comment.save
+        redirect_to :back, :notice => '¡Éxito al crear comentario!'
+      else
+        redirect_to :back, :alert => @comment.errors.messages[:title]
+      end
     else
-      redirect_to @comment.commentable, :alert => @comment.errors.messages[:title]
+      redirect_to :back, :alert => "No tiene Permiso para Crear Pregunta"
     end
-
   end
 
   def update

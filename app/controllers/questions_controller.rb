@@ -1,11 +1,13 @@
 class QuestionsController < ApplicationController
     before_action :authenticate_user!, except: [:show,:index]
   def new
-    @question = Question.new
-    @all_labels = Label.where(active: true).all
-
+    if current_user.permit("Crear Pregunta")
+      @question = Question.new
+      @all_labels = Label.where(active: true).all
+    else
+      redirect_to :back, :alert => "No tiene Permiso para Crear Pregunta"
+    end
   end
-
   def edit
   end
 
@@ -42,11 +44,11 @@ class QuestionsController < ApplicationController
       if @q.save 
         redirect_to questions_path
       else 
-        
-        redirect_to :controller => 'main', :action => 'no_se_pudo_guardar'
+        redirect_to :back, :alert => "Ocurrio un error al Crear la Pregunta"
       end
      
-    else redirect_to :controller => 'main', :action => 'error'
+    else               
+      redirect_to :back, :alert => "La cantidad de etiquetas seleccionas es incorreta 1..5"
     end
        
   end
@@ -59,8 +61,12 @@ class QuestionsController < ApplicationController
 
   def set_best
     question = Question.find(params[:question])
-    question.set_best(Answer.find(params[:answer]))
-    redirect_to question
+    if current_user.id == question.user.id
+      question.set_best(Answer.find(params[:answer]))
+      redirect_to question
+    else
+      redirect_to :back, :alert => "La respuesta seleccionada no es de una Pregunta propia"
+    end
   end
 
 end

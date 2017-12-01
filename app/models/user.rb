@@ -54,8 +54,15 @@ class User < ApplicationRecord
     def permit(action) #accion como string
       return (self.level.actions.where(name: "#{action}").first != nil)
     end
+
     def add_points (points)
       self.points += points
+      self.points = self.points <= 1 ? 1 : self.points
+      update_level
+    end
+    def sub_points (points)
+      self.points -= points
+      self.points = self.points <= 1 ? 1 : self.points
       update_level
     end
 end

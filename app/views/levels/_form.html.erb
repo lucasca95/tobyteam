@@ -1,5 +1,5 @@
 <%= form_for @level do |f| %>
-	<%= f.label :"Nombre del nivel: " %>
+	<%= f.label :"Nombre del puti nivel: " %>
 	<%= f.text_field :name, required: true, placeholder: 'Ingrese nombre' %>
 	<br>
 	<%= f.label :"Puntos del nivel:  " %>
@@ -7,7 +7,28 @@
 	<br>
 	<%= f.label :"Permisos del nivel:  " %>
 
-	<%= f.collection_check_boxes :action_ids,Action.all,:id,:name%>
-
-	<%= f.submit 'Guardar', class: 'btn btn-lg btn-danger '%>
+	<%= f.collection_check_boxes(:action_ids, Action.alfabeta, :id, :name) do |b| %>
+ 	 <div class="table-hover">
+ 	 	<table class="table">
+ 	 	<th>
+    		<%= b.label(class: "check_box") do %>
+      			<tr>
+      			<div class="col-xs-4">
+        			<%= b.check_box(class: "check_box") %>
+      			</div>
+      			</tr>
+      			<tr>
+      			<div class="col-xs-8">
+        			<%= b.object.name %>
+      			</div>
+        		</tr>
+    		<% end %>
+    		</th>
+    	</table>
+  	</div>
+<% end %>
+	<div>
+	
+	<%= f.submit 'Guardar', class: 'btn btn-lg btn-danger col-xs-3 '%>
+	</div>
 <% end %>

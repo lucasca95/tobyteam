@@ -4,7 +4,7 @@
 	<%= f.hidden_field :commentable_id, :value => @new_ca.commentable_id %>
 	<%= f.hidden_field :commentable_type, :value => @new_ca.commentable_type %>
 	<%= f.label :"Comente Aqui "%>
-	<%= f.text_area :body , class: 'form-control' , placeholder: 'Ingrese su Comentario Aqui' %>
+	<%= f.text_area :body , class: 'form-control' , placeholder: 'Ingrese su Comentario Aqui', required: true %>
 	<%= f.submit 'Comente la Respuesta!', class: 'btn btn-info btn-sm' %>
 <% end %>
 </div>

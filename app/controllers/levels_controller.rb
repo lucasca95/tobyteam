@@ -5,7 +5,7 @@ class LevelsController < ApplicationController
     if ( current_user.permit("Administrar") )
       @level = Level.new
     else
-      redirect_to :controller => 'main', :action => 'sin_permiso'
+      redirect_to :root, :alert => "No tiene permisos para Administrar"
     end
   end
 
@@ -18,7 +18,11 @@ class LevelsController < ApplicationController
   end
 
   def index
-    @levels = Level.actualizar
+    if ( current_user.permit("Administrar") )
+      @levels = Level.actualizar
+    else
+      redirect_to :root, :alert => "No tiene permisos para Administrar"
+    end
   end
 
   def create
@@ -28,7 +32,7 @@ class LevelsController < ApplicationController
     if @level.save
       redirect_to levels_path
     else
-      redirect_to new_level_path, :alert => @level.errors.messages[:name]
+      redirect_to new_level_path, :alert => "Error al guardar el nivel"
     end
 
   end

@@ -24,12 +24,12 @@ class AnswersController < ApplicationController
         @answer.user = current_user
         
       if @answer.save
-        redirect_to :back, :notice => '¡Respuesta agregada con éssito!'
+        redirect_to @answer.question, :notice => '¡Respuesta agregada con éssito!'
       else
-        redirect_to :back, :alert => @answer.errors.messages[:title]
+        redirect_to @answer.question, :alert => @answer.errors.messages[:title]
       end
     else
-      redirect_to :back, :alert => "No tiene Permiso para Crear Pregunta"
+      redirect_to @answer.question, :alert => "No tiene Permiso para Crear Pregunta"
     end
 
   end

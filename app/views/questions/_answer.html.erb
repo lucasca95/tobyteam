@@ -50,13 +50,18 @@
 				<td style="width: auto; vertical-align:middle; text-align:center">
 					
 					<% if @question.answer_id == answer.id %>
-				   			<% if @question.user==current_user %>
+				   			<% if @question.user.id == current_user.id %>
 					
-								<%= link_to "" , questions_set_best_path(@best),method: :post, class:"btn btn-warning btn-lg glyphicon glyphicon-star", disabled: :true%>
+								<%= link_to "" , "#",method: :post, class:"btn btn-warning btn-lg glyphicon glyphicon-star", disabled: :true%>
 							<% else %>
 								<a type="button" class="btn btn-warning btn-lg glyphicon glyphicon-star" href="#" disabled="disabled"></a>
 							<% end %>
-	
+				
+					<% else %>
+					   		<% if @question.user.id == current_user.id %>
+								<% @best = { 	question:@question,answer: answer}%>
+								<%= link_to "" , questions_set_best_path(@best),method: :post, class:"btn btn-warning btn-lg glyphicon glyphicon-star"%>
+							<% end %>
 				
 					<% end %>
 

@@ -39,7 +39,6 @@ class Question < ApplicationRecord
 
   def set_best(answer)
       points = Action.where(:name => "Mejor Respuesta").first.points
-	    answer = Answer.find(params[:answer])
 	    if answer.question.id == self.id
 	      self.answer = answer
         answer.user.add_points(points)

@@ -1,34 +1,29 @@
 <%= form_for @level do |f| %>
-	<%= f.label :"Nombre del puti nivel: " %>
+	<%= f.label :"Nombre" %>
 	<%= f.text_field :name, required: true, placeholder: 'Ingrese nombre' %>
 	<br>
 	<%= f.label :"Puntos del nivel:  " %>
 	<%= f.number_field :points, required: true, placeholder: 'Ingrese puntos' %>
 	<br>
 	<%= f.label :"Permisos del nivel:  " %>
+  <%= f.collection_check_boxes(:action_ids, Action.alfabeta, :id, :name) do |b| %>
+    <table >
+      <tr >
+        <td>
+          <%= b.label(class: "check_box") do %>
 
-	<%= f.collection_check_boxes(:action_ids, Action.alfabeta, :id, :name) do |b| %>
- 	 <div class="table-hover">
- 	 	<table class="table">
- 	 	<th>
-    		<%= b.label(class: "check_box") do %>
-      			<tr>
-      			<div class="col-xs-4">
-        			<%= b.check_box(class: "check_box") %>
-      			</div>
-      			</tr>
-      			<tr>
-      			<div class="col-xs-8">
-        			<%= b.object.name %>
-      			</div>
-        		</tr>
-    		<% end %>
-    		</th>
-    	</table>
-  	</div>
+          <%= b.check_box(class: "check_box") %>
+        </td>
+        <td>
+          <%= b.object.name %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+
 <% end %>
 	<div>
 	
-	<%= f.submit 'Guardar', class: 'btn btn-lg btn-danger col-xs-3 '%>
+	<%= f.submit 'Guardar', class: 'btn btn-lg btn-danger col-xs-1 '%>
 	</div>
 <% end %>

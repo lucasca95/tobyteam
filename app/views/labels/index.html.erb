@@ -5,14 +5,20 @@
 <thead>
   <tr>
     <th>Titulo</th>
-    <th>Active</th>
+    <th>Estado</th>
   </tr>
 </thead>
   <% @lista_labels.each do |v| %>
   <tbody>
   <tr>
     <td><%= link_to v.title , v%></td>
-    <td><%=v.active%></td>
+    <td>
+    <% if !v.active.nil?%>
+          Activada  
+    <% else %>
+          Desactivada
+    <% end %>
+    </td>
 
   </tr>
   <%end%>

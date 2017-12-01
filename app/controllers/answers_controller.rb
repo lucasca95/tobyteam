@@ -26,10 +26,10 @@ class AnswersController < ApplicationController
       if @answer.save
         redirect_to @answer.question, :notice => '¡Respuesta agregada con éssito!'
       else
-        redirect_to @answer.question, :alert => @answer.errors.messages[:title]
+        redirect_to @answer.question, :alert => "Ocurrio un error al crear una Respuesta"
       end
     else
-      redirect_to @answer.question, :alert => "No tiene Permiso para Crear Pregunta"
+      redirect_to @answer.question, :alert => "No tiene Permiso para Crear Respuesta"
     end
 
   end

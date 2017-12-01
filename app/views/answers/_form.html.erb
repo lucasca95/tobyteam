@@ -2,7 +2,7 @@
 <%= form_for @new_a do |f| %>
 	<%= f.hidden_field :question_id, :value => @question.id %>
 	<%= f.label :"Respuesta Aqui "%>
-	<%= f.text_area :body , class: 'form-control' , placeholder: 'Ingrese su Respuesta Aqui' %>
+	<%= f.text_area :body , class: 'form-control' , placeholder: 'Ingrese su Respuesta Aqui', required: true%>
 	<%= f.submit 'Responda la Pregunta!', class: 'btn btn-primary btn-lg' %>
 <% end %>
 </div>

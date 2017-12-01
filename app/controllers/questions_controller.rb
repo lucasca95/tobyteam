@@ -29,8 +29,6 @@ class QuestionsController < ApplicationController
       @listaQuestions=Question.created.search(params[:id2])
     end
     
-    
-    #rompe
 
   end
 

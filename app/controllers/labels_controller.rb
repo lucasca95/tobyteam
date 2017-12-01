@@ -4,7 +4,7 @@ class LabelsController < ApplicationController
     if ( current_user.permit("Administrar") )
       @label = Label.new
     else
-      redirect_to :controller => 'main', :action => 'sin_permiso'
+      redirect_to :root, :alert => "No tiene permisos para Administrar"
     end
   end
 
@@ -26,7 +26,7 @@ class LabelsController < ApplicationController
     if @label.save
       redirect_to labels_path
     else
-      redirect_to new_label_path, :alert => @label.errors.messages[:title]
+      redirect_to new_label_path, :alert =>"Ocurrio un error al guardar la etiqueta"
     end
 
   end

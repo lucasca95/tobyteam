@@ -3,6 +3,7 @@ class LabelsController < ApplicationController
   def new
     if ( current_user.permit("Administrar") )
       @label = Label.new
+      @label.active = true
     else
       redirect_to :root, :alert => "No tiene permisos para Administrar"
     end
@@ -21,7 +22,8 @@ class LabelsController < ApplicationController
 
   def create
 
-    @label = Label.new(params.require(:label).permit(:title, :active))
+    @label = Label.new(params.require(:label).permit(:title))
+    @label.active = params.require(:label).permit(:active) == "1"
     @label.title = @label.title.upcase.gsub(/[^A-Z]/, '')
     if @label.save
       redirect_to labels_path

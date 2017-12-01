@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
       @question = Question.new
       @all_labels = Label.where(active: true).all
     else
-      redirect_to :root, :alert => "No tiene Permiso para Crear Pregunta"
+      redirect_to :root, :alert => "No tiene permiso para crear pregunta"
     end
   end
   def edit
@@ -44,14 +44,16 @@ class QuestionsController < ApplicationController
 
       if @question.save 
         redirect_to questions_path
+        flash[:notice] = "¡Pregunta creada con éxito!"
       else 
-
-        flash[:alert] = "error al crear la Pregunta"
-         render 'new'
+          render 'new'
+          flash[:alert] = "Error al crear la pregunta. Falta completar información: asegúrese que la pregunta tenga Título y Cuerpo."
       end
+
+
      
     else
-      flash[:alert]="La cantidad de etiquetas seleccionas es incorreta 1..5"
+      flash[:alert]="La cantidad de etiquetas seleccionas es incorreta. Ingrese cantidad valida (1..5)"
         render 'new'
 
     end

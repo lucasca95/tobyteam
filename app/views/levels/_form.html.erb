@@ -7,7 +7,7 @@
 	<br>
 	<%= f.label :"Permisos del nivel:  " %>
 
-	<%= f.collection_check_boxes :action_ids,Action.all,:id,:name %>
+	<%= f.collection_check_boxes :action_ids,Action.all,:id,:name%>
 
-	<%= f.submit 'Guardar' %>
+	<%= f.submit 'Guardar', class: 'btn btn-lg btn-danger '%>
 <% end %>

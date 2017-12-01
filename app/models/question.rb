@@ -7,11 +7,14 @@ class Question < ApplicationRecord
 	has_many :answers
 	belongs_to :answer , optional: true
 	has_and_belongs_to_many :labels
+
 	#Validaciones
 	validates :title,
 		presence: true
+    
 	validates :body,
 		presence: true
+    
 	#SCOPES
 	#Dejamos de usar el por defecto porque trae problemas con el orden
   #default_scope -> { order("created_at desc") }

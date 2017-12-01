@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
       @question = Question.new
       @all_labels = Label.where(active: true).all
     else
-      redirect_to :back, :alert => "No tiene Permiso para Crear Pregunta"
+      redirect_to :root, :alert => "No tiene Permiso para Crear Pregunta"
     end
   end
   def edit
@@ -44,11 +44,12 @@ class QuestionsController < ApplicationController
       if @q.save 
         redirect_to questions_path
       else 
-        redirect_to :back, :alert => "Ocurrio un error al Crear la Pregunta"
+        redirect_back(fallback_location: root_path, notice: "Something went wrong!")
+
       end
      
-    else               
-      redirect_to :back, :alert => "La cantidad de etiquetas seleccionas es incorreta 1..5"
+    else  
+      redirect_back(fallback_location: :back)
     end
        
   end

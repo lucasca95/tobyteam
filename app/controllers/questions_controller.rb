@@ -36,19 +36,23 @@ class QuestionsController < ApplicationController
 
   def create
     #@l = Label.find(:id)
-    @q = Question.new(params.require(:question).permit(:title, :body, label_ids: []))
-    @q.user = current_user
+    @all_labels = Label.where(active: true).all
+    @question = Question.new(params.require(:question).permit(:title, :body, label_ids: []))
+    @question.user = current_user
     
-    if ((@q.label_ids.length>0) and (@q.label_ids.length<6))
+    if ((@question.label_ids.length>0) and (@question.label_ids.length<6))
 
-      if @q.save 
+      if @question.save 
         redirect_to questions_path
       else 
-        redirect_to :back, :alert => "Ocurrio un error al Crear la Pregunta"
+        flash[:alert] = "error al crear la Pregunta"
+         render 'new'
       end
      
-    else               
-      redirect_to :back, :alert => "La cantidad de etiquetas seleccionas es incorreta 1..5"
+    else
+      flash[:alert]="La cantidad de etiquetas seleccionas es incorreta 1..5"
+        render 'new'
+        
     end
        
   end

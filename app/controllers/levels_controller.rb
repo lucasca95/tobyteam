@@ -47,11 +47,7 @@ class LevelsController < ApplicationController
     else
       redirect_to edit_level_path, :alert => "Error al modificar el nivel. ¿Será que el nombre o los puntos están repetidos?"
     end
-   # if Level.update(params.require(:level).permit(:name, :points, action_ids: []))
-   #   redirect_to levels_path
-   # else
-   #   redirect_to :back , :alert => "Ocurrio un error al actualizar nivel"
-   # end
+
   end
 
 

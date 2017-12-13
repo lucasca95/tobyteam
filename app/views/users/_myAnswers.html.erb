@@ -1,0 +1,7 @@
+<tr style="border-width: 5px;border: solid; border-color:  #000000 ;">
+    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"><%= link_to myAnswers.question.title, myAnswers.question%></td>
+    
+    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"><FONT FACE="Comic Sans MS"><%= truncate( myAnswers.body, length: 30)%></FONT>></td>
+
+    <td style="border-width: 5px;border: solid; border-color:  #000000 ;"><%=myAnswers.created_at.strftime("%Y-%m-%d")%></td>
+  </tr>

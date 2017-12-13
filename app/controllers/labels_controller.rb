@@ -22,8 +22,7 @@ class LabelsController < ApplicationController
 
   def create
 
-    @label = Label.new(params.require(:label).permit(:title))
-    @label.active = params.require(:label).permit(:active) == "1"
+    @label = Label.new(params.require(:label).permit(:title, :active))
     @label.title = @label.title.upcase.gsub(/[^A-Z]/, '')
     if @label.save
       redirect_to labels_path

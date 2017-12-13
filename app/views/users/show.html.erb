@@ -1,4 +1,4 @@
-<h1>Mi perfil</h1>
+<h1>Perfil de <%=@usuario.name%> <%=@usuario.lastname%></h1>
 <br><br>
 
 
@@ -38,6 +38,9 @@
   </tbody>
 </table>
 
+
+<%if (@usuario.id == current_user.id)%>
+  
 <table class="table">
 <thead>
   <tr>
@@ -52,14 +55,13 @@
   </tr>  
   </tbody>
 </table>
+<%end%>
+
 
 <br>
-<h4>Preguntas realizadas por mí:</h4>
+<h4>PREGUNTAS realizadas por <%=@usuario.name%> <%=@usuario.lastname%>:</h4>
 <br>
 
-
-<%if (@usuario.id == current_user.id)%>
-  
 <table class="table table-hover table-bordered" style="border-width: 5px;border: solid; border-color:  #000000 ;">
 <thead>
   <tr style="border-width: 5px;border: solid; border-color:  #000000 ;">
@@ -75,6 +77,55 @@
 
  </tbody>
 </table>
+
+
+
+<br>
+<h4>RESPUESTAS realizadas por <%=@usuario.name%> <%=@usuario.lastname%>:</h4>
+<br>
+
+<table class="table table-hover table-bordered" style="border-width: 5px;border: solid; border-color:  #000000 ;">
+<thead>
+  <tr style="border-width: 5px;border: solid; border-color:  #000000 ;">
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Titulo de pregunta</th>
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Cuerpo de respuesta</th>
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Fecha</th>
+  </tr>
+</thead>
+  
+  <tbody style="border-width: 5px;border: solid; border-color:  #000000 ;">
+  
+    <%= render :partial => "myAnswers", :collection => @myAnswers %>
+
+ </tbody>
+</table>
+
+
+
+
+<%if (@usuario.id == current_user.id)%>
+    
+
+<br>
+<h4>Preguntas votadas por <%=@usuario.name%> <%=@usuario.lastname%>:</h4>
+<br>
+
+<table class="table table-hover table-bordered" style="border-width: 5px;border: solid; border-color:  #000000 ;">
+<thead>
+  <tr style="border-width: 5px;border: solid; border-color:  #000000 ;">
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Titulo</th>
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Cuerpo</th>
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Voto</th>
+  </tr>
+</thead>
+  
+  <tbody style="border-width: 5px;border: solid; border-color:  #000000 ;">
+  
+    <%= render :partial => "myVotesQuestions", :collection => current_user.questionsvotes %>
+  </tbody>
+</table>
+
+
     
 <br>
 <h4>Mis acciones disponibles:</h4>
@@ -94,26 +145,6 @@
 
  </tbody>
 </table>
-
-<br>
-<h4>Preguntas votadas por mí:</h4>
-<br>
-
-<table class="table table-hover table-bordered" style="border-width: 5px;border: solid; border-color:  #000000 ;">
-<thead>
-  <tr style="border-width: 5px;border: solid; border-color:  #000000 ;">
-    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Titulo</th>
-    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Cuerpo</th>
-    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Voto</th>
-  </tr>
-</thead>
-  
-  <tbody style="border-width: 5px;border: solid; border-color:  #000000 ;">
-  
-    <%= render :partial => "myVotesQuestions", :collection => current_user.questionsvotes %>
-  </tbody>
-</table>
-
 
   
 <%end%>

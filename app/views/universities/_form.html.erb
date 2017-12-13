@@ -1,0 +1,17 @@
+<%= form_for @university do |f| %>
+	<%= f.label :"Nombre" %>
+	<%= f.text_field :name, required: true, placeholder: 'Ingrese nombre' %>
+	<br>
+	<%= f.label :"Provincia" %>
+  <%= f.text_field :province, required: true, placeholder: 'Ingrese provincia' %>
+	<br>
+	<%= f.label :"URL:" %>
+  <%= f.text_field :url, required: true, placeholder: 'Ingrese url de universidad' %>
+	
+
+
+
+  <div>
+		<%= f.submit 'Guardar', class: 'btn btn-lg btn-danger col-xs-1 '%>
+	</div>
+<% end %>

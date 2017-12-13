@@ -62,6 +62,12 @@
              <li><%= link_to "Crear Nivel", :controller => '/levels', :action => :new %></li>
                       <% end %>
 
+
+            <% if !current_user.nil? &&(current_user.permit("Administrar"))%>       
+             <li><%= link_to "Crear Universidad", :controller => '/universities', :action => :new %></li>
+                      <% end %>
+
+
           <li class="divider"></li>
             <% if !current_user.nil? &&(current_user.permit("Administrar"))%>       
 

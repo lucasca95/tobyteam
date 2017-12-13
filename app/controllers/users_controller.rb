@@ -8,7 +8,8 @@ class UsersController < ApplicationController
 
   def show
     @usuario=User.find(params[:id])
-    @myQuestions=current_user.questions
+    @myQuestions=@usuario.questions
+    @myAnswers=@usuario.answers
   end
 
   def index

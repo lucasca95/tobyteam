@@ -40,12 +40,24 @@ class Question < ApplicationRecord
     end
   end
 
-  def set_best(answer)
+  def set_best(answer, current_user)
       points = Action.where(:name => "Mejor Respuesta").first.points
 	    if answer.question.id == self.id
-	      self.answer = answer
-        answer.user.add_points(points)
-	      self.save  
+        if self.answer.nil?
+          self.answer = answer
+          if current_user.id != answer.user.id
+            answer.user.add_points(points)
+  	      end
+        else
+          if self.answer.user.id != self.user.id
+            self.answer.user.sub_points(points)
+          end
+          self.answer = answer
+          if current_user.id != answer.user.id
+            answer.user.add_points(points)
+          end
+        end
+        self.save  
 	    end
 
   end

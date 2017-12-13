@@ -68,7 +68,7 @@ class QuestionsController < ApplicationController
     question = Question.find(params[:question])
     ans = Answer.find(params[:answer])
     if current_user.id == question.user.id
-      question.set_best(ans)
+      question.set_best(ans,current_user)
       redirect_to question
     else
       redirect_to :back, :alert => "La respuesta seleccionada no es de una Pregunta propia"

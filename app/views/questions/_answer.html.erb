@@ -50,7 +50,7 @@
 				<td style="width: auto; vertical-align:middle; text-align:center">
 					
 					<% if @question.answer_id == answer.id %>
-				   			<% if @question.user.id == current_user.id %>
+				   			<% if (current_user != nil) &&  (@question.user_id == current_user.id) %>
 					
 								<%= link_to "" , "#",method: :post, class:"btn btn-warning btn-lg glyphicon glyphicon-star", disabled: :true%>
 							<% else %>
@@ -58,7 +58,7 @@
 							<% end %>
 				
 					<% else %>
-					   		<% if @question.user.id == current_user.id %>
+					   		<% if (current_user != nil) &&  (@question.user_id == current_user.id) %>
 								<% @best = { 	question:@question,answer: answer}%>
 								<%= link_to "" , questions_set_best_path(@best),method: :post, class:"btn btn-warning btn-lg glyphicon glyphicon-star"%>
 							<% end %>

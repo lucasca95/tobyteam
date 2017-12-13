@@ -32,16 +32,19 @@ class LevelsController < ApplicationController
     if @level.save
       redirect_to levels_path
     else
-      redirect_to new_level_path, :alert => "Error al guardar el nivel"
+      redirect_to new_level_path, :alert => "Error al guardar el nivel. ¿Será que el nombre o los puntos están repetidos?"
     end
 
   end
 
   def update
-    if Level.update(params.require(:level).permit(:name, :points, action_ids: []))
+    @level = Level.update(params.require(:level).permit(:name, :points, action_ids: [])).first
+    @level.name = @level.name.upcase.gsub(/[^A-Z]/, '')
+    if @level.save
       redirect_to levels_path
     else
-      redirect_to :back , :alert => "Ocurrio un error"
+      #redirect_to :back , :alert => "Ocurrio un error al actualizar nivel"
+      redirect_to levels_path , :alert => "Ocurrio un error al modificar nivel"
     end
   end
 

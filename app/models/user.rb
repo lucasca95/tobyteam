@@ -40,6 +40,7 @@ class User < ApplicationRecord
     def answersvotes
       return self.votes.where(votable_type: "Answers")
     end
+
     def update_level()
       @level = Level.actualizar.where("points <= #{self.points} ").first
       if (!@level.nil?)
@@ -51,6 +52,7 @@ class User < ApplicationRecord
       end
       self.save
     end
+
     def permit(action) #accion como string
       return (self.level.actions.where(name: "#{action}").first != nil)
     end
@@ -60,6 +62,7 @@ class User < ApplicationRecord
       self.points = self.points <= 1 ? 1 : self.points
       update_level
     end
+    
     def sub_points (points)
       self.points -= points
       self.points = self.points <= 1 ? 1 : self.points

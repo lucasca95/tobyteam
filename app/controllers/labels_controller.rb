@@ -36,5 +36,12 @@ class LabelsController < ApplicationController
   end
 
   def destroy
+    @label=Label.find(params[:id])
+    @label.active = false
+    if @label.save
+      redirect_to labels_path
+    else
+      redirect_to new_label_path, :alert =>"Ocurrio un error al guardar la etiqueta"
+    end
   end
 end

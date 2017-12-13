@@ -1,12 +1,12 @@
 
 
-puts "Creo Univeridad"
-University.find_or_create_by(name: "UNLP", province: "Buenos Aires", url:"unlp.edu.ar")
-University.find_or_create_by(name: "UBA", province: "Capital Federal", url:"uba.edu.ar")
+puts "Creo Universidad"
+University.find_or_create_by(name: "UNLP", province: "BUENOS AIRES", url:"unlp.edu.ar")
+University.find_or_create_by(name: "UBA", province: "CAPITAL FEDERAL", url:"uba.edu.ar")
 
 
 puts "Creo Niveles"
-level_1=Level.find_or_create_by(name: "Modificar contenidos", points: 1000)
+level_1=Level.find_or_create_by(name: "Modificar contenido", points: 1000)
 level_2=Level.find_or_create_by(name: "Administrar facultades", points: 500)
 level_3=Level.find_or_create_by(name: "Administrar etiquetas", points: 300)
 level_4=Level.find_or_create_by(name: "Votar negativo", points: 100)
@@ -104,13 +104,13 @@ Notification.find_or_create_by(body: "Notificaion 3", user_id: 3, read:false)
 Notification.find_or_create_by(body: "Notificaion 1", user_id: 2, read:false)
 
 puts "Creo Pregunta"
-pregunta_1=Question.find_or_create_by(title: "¿Que hace Ruby?", body: "Serian tan amables de contrame lo que hace ruby?", user_id: 1)
+pregunta_1=Question.find_or_create_by(title: "¿Que hace Ruby?", body: "Serian tan amables de contrame lo que hace ruby?", user_id: 1, created_at: "2016-12-13 16:24:59 UTC")
 pregunta_1.labels << etiqueta_informatica
 pregunta_2=Question.find_or_create_by(title: "¿Como se construye un puente?", body: "Estudié ingenieria pero no me acuerdo como es..", user_id: 2)
 pregunta_2.labels << etiqueta_ingenieria
 pregunta_3=Question.find_or_create_by(title: "Represa Hidroelectrica", body: "Necesito un plano para hacer una en casa :|", user_id: 3)
 pregunta_3.labels << etiqueta_ingenieria
-pregunta_4=Question.find_or_create_by(title: "Encender un led", body: "Amigos. Necesito saber como se hacen las cuentas para que un led no se queme. Saludos", user_id: 3)
+pregunta_4=Question.find_or_create_by(title: "Encender un led", body: "Amigos. Necesito saber como se hacen las cuentas para que un led no se queme. Saludos", user_id: 3, created_at: "2015-08-09 13:30:14 UTC")
 pregunta_4.labels << etiqueta_electronica
 pregunta_5=Question.find_or_create_by(title: "RANDOM", body: "¿Cuánto osigeno ehhh le quita realmente un auto, una combustión de un auto, ehhh equivale ehhh a cuántos árboles se necesitan para ehhh ehhh evitar justamente que el árbol que da osígeno ehhh indudablemente uno en la montaña cuando ve realmente que no hay ningún árbol es que no hay osígeno, quiere decir que falta osígeno ahí en la montaña que vos me dijiste en otra oportunidad. Qué pasa cuánto equivale el los gases y la y lo que le quita osígeno ehhh comparado con la cantidad de áboles que haría falta para combatir ehhh ehhh la combustión de un auto ehh que está obsoleto como dijiste vos que tiene más de 120 años que le quita osígeno?", user_id: 4)
 pregunta_5.labels << etiqueta_offtopic

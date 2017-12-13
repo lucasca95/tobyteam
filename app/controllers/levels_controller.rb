@@ -1,16 +1,12 @@
 class LevelsController < ApplicationController
   before_action :authenticate_user!
-
+  
   def new
     if ( current_user.permit("Administrar") )
       @level = Level.new
     else
       redirect_to :root, :alert => "No tiene permisos para Administrar"
     end
-  end
-
-  def edit
-    @level = Level.find(params[:id])
   end
 
   def show
@@ -25,6 +21,11 @@ class LevelsController < ApplicationController
     end
   end
 
+
+  def edit
+    @level = Level.find(params[:id])
+  end
+
   def create
 
     @level = Level.new(params.require(:level).permit(:name, :points, action_ids: []))
@@ -37,16 +38,26 @@ class LevelsController < ApplicationController
 
   end
 
+
   def update
-    @level = Level.update(params.require(:level).permit(:name, :points, action_ids: [])).first
+    @level = Level.update(params.require(:level).permit(:name, :points, action_ids: [])).last
     @level.name = @level.name.upcase.gsub(/[^A-Z]/, '')
     if @level.save
       redirect_to levels_path
     else
-      #redirect_to :back , :alert => "Ocurrio un error al actualizar nivel"
-      redirect_to levels_path , :alert => "Ocurrio un error al modificar nivel"
+      redirect_to edit_level_path, :alert => "Error al modificar el nivel. ¿Será que el nombre o los puntos están repetidos?"
     end
+   # if Level.update(params.require(:level).permit(:name, :points, action_ids: []))
+   #   redirect_to levels_path
+   # else
+   #   redirect_to :back , :alert => "Ocurrio un error al actualizar nivel"
+   # end
   end
+
+
+
+
+
 
   def destroy
     l = Level.find(params[:id])

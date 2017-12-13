@@ -62,6 +62,13 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    @question = Question.find(params[:id])
+    if current_user.id == @question.user.id
+      Question.destroy(params[:id])
+      redirect_to questions_path
+    else
+      redirect_to @question, :alert  => "No es dueño de esa Pregunta"
+    end 
   end
 
   def set_best

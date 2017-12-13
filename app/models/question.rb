@@ -1,10 +1,10 @@
 class Question < ApplicationRecord
 	#Relaciones y Dependencias
 	belongs_to :user
-	has_many :votes, :as => :votable
-	has_many :reports, :as => :reportable
-	has_many :comments, :as => :commentable
-	has_many :answers
+	has_many :votes, :as => :votable, dependent: :destroy
+	has_many :reports, :as => :reportable, dependent: :destroy
+	has_many :comments, :as => :commentable, dependent: :destroy
+	has_many :answers, dependent: :destroy
 	belongs_to :answer , optional: true
 	has_and_belongs_to_many :labels
 

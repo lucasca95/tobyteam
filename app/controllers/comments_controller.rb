@@ -32,5 +32,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    if current_user.id == @comment.user.id
+      Comment.destroy(params[:id])
+      redirect_to @comment.commentable
+    else
+      redirect_to @comment.commentable, :alert  => "No es dueño de ese comentario"
+    end 
   end
 end

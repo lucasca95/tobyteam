@@ -7,6 +7,11 @@ class Label < ApplicationRecord
 		validates :title,
 			uniqueness: true
 
-	default_scope ->{order("title")}
-
+	scope :title, ->{order("title")}
+  def self.used
+    select('labels.*, COUNT(questions.id) AS questions_count').
+      joins(:labels_questions).joins(:questions).                                                 
+      group('labels.id').
+      order('questions_count desc').limit(15)
+  end
 end

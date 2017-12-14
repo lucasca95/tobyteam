@@ -1,2 +1,19 @@
-<h1>Universities#show</h1>
-<p>Find me in app/views/universities/show.html.erb</p>
+<h1>Listado de Preguntas de <%=@university.name%></h1>
+<br><br>
+
+	
+<table class="table table-hover table-bordered" style="border-width: 5px;border: solid; border-color:  #000000 ;">
+<thead>
+  <tr style="border-width: 5px;border: solid; border-color:  #000000 ;">
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Titulo</th>
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Cuerpo</th>
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Usuario</th>
+    <th style="border-width: 5px;border: solid; border-color:  #000000 ;">Fecha</th>
+  </tr>
+</thead>
+  <tbody style="border-width: 5px;border: solid; border-color:  #000000 ;">
+  <%= render :partial => '/questions/index' , :collection => @university.questions %>
+
+
+  </tbody>
+</table>

@@ -40,8 +40,26 @@
           
         </ul>
       </li>
-      <li><%= link_to "Ver facultades" , universities_path %></li>
-      <li><a href="/labels">Ver Etiquetas</a></li>
+      
+<li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Facultades <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Ver facultades" , universities_path %></li>
+          <li><%= link_to "Con más Preguntas", University.topquestion.first %></li>
+        </ul>
+      </li>
+
+     
+<li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Etiquetas <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Ver Etiquetas", labels_path %></li>
+          <li><%= link_to "Top Usadas", labels_path({type: 1}) %></li>
+        </ul>
+      </li>
+
+
+
       <li class="dropdown">
 
           <% if !current_user.nil? &&( current_user.permit("Administrar") || current_user.permit("Administrar Etiquetas") || current_user.permit("Administrar Univeridades")) %>

@@ -38,5 +38,16 @@ class AnswersController < ApplicationController
   end
 
   def destroy
+    answer = Answer.find(params[:id])
+    if current_user.id == answer.user.id
+      if answer.question.answer_id == answer.id
+        answer.question.answer_id = nil
+        answer.question.save
+      end
+        Answer.destroy(params[:id])
+        redirect_to answer.question
+    else
+      redirect_to answer, :alert  => "No es dueño de ese comentario"
+    end 
   end
 end

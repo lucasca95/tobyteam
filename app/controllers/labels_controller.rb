@@ -17,9 +17,16 @@ class LabelsController < ApplicationController
   end
 
   def index
-    @lista_labels = Label.all
-  end
+    @type = params[:type]
+    case @type
+    when "1"
+      @lista_labels = Label.used
+    else
+      @lista_labels=Label.title
+    end
+    
 
+  end
   def create
 
     @label = Label.new(params.require(:label).permit(:title, :active))

@@ -7,6 +7,7 @@ class UniversitiesController < ApplicationController
   end
 
   def show
+    @university = University.find(params[:id])
   end
 
   def index

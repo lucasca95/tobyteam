@@ -5,6 +5,7 @@ class CreateQuestions < ActiveRecord::Migration[5.1]
       t.string :body
       t.integer :user_id
       t.references :answer
+      t.integer :visits
       t.timestamps
     end
   end

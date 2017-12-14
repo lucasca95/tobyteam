@@ -21,7 +21,7 @@ class Question < ApplicationRecord
   #Scope busqueda
 
   scope :created, -> {order(created_at: :desc)}
-   
+  scope :visited, -> {order(visits: :desc)}
   def self.unanswer
     select('questions.*, COUNT(answers.id) AS answers_count').
       joins("FULL OUTER  JOIN \"answers\" ON \"answers\".\"question_id\" = \"questions\".\"id\"").                                                   
@@ -48,6 +48,12 @@ class Question < ApplicationRecord
 	      self.save  
 	    end
 
+  end
+  def add_visit(current_user)
+    if !current_user.nil? && (current_user.id != self.user.id)
+      self.visits = self.visits + 1
+      self.save
+    end
   end
 
   def voted(user)

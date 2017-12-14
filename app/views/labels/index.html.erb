@@ -19,8 +19,13 @@
           Desactivada
     <% end %>
     </td>
-    <%if current_user.permit('Administrar Etiquetas')%>
-      <td><%= link_to "Eliminar", v, method: :delete, :data => {:confirm => 'Está seguro?'}  %></td>
+    <%if current_user%>
+      <%if current_user.permit('Administrar Etiquetas')%>
+        <td><%= link_to "Editar", edit_label_path(v) %></td>
+      <%end%>
+      <%if current_user.permit('Administrar Etiquetas')%>
+        <td><%= link_to "Cambiar estado", v, method: :delete, :data => {:confirm => 'Está seguro?'}  %></td>
+      <%end%>
     <%end%>
   </tr>
   <%end%>

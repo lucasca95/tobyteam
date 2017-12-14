@@ -139,3 +139,12 @@ Sobre Git:
 	Para borrar una rama:
 		git push -d <remote_name> <branch_name>
 		git branch -d <branch_name>
+
+Para mandar mails:
+	Hay que ejecutar los siguientes comandos cuando se sube todo a 
+	heroku, desde una terminal, parado en la carpeta del proyecto.
+
+	heroku config:set email=tuemail@gmail.com
+	heroku config:set email_password=tupassword
+
+	Donde el mail y la contrasenia son las de la empresa desarrolladora.

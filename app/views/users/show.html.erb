@@ -1,4 +1,7 @@
-<h1>Perfil de <%=@usuario.name%> <%=@usuario.lastname%></h1>
+<div class="Efecto">Perfil de <%=@usuario.name%> <%=@usuario.lastname%></div>
+ <% if current_user.id==@usuario.id %>
+        <%= link_to 'Editar', edit_user_registration_path ,class: 'btn btn-success'%>  
+    <% end %>
 <br><br>
 
 
@@ -27,7 +30,7 @@
 <thead>
   <tr>
     <th>Nivel</th>
-    <th>Mis puntos</th>
+    <th>Puntos</th>
   </tr>
 </thead>
   <tbody>
@@ -45,13 +48,11 @@
 <thead>
   <tr>
     <th>E-mail</th>
-    <th>Contraseña</th>
   </tr>
 </thead>
   <tbody>
   <tr>
     <td><%=@usuario.email%></td>
-    <td><%='XXXXXX'%></td>
   </tr>  
   </tbody>
 </table>

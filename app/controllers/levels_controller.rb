@@ -29,7 +29,8 @@ class LevelsController < ApplicationController
   def create
 
     @level = Level.new(params.require(:level).permit(:name, :points, action_ids: []))
-    @level.name = @level.name.upcase.gsub(/[^A-Z]/, '')
+    #@level.name = @level.name.upcase.gsub(/[^A-Z]/, '')
+    @level.name = @level.name.upcase
     if @level.save
       redirect_to levels_path
     else
@@ -40,14 +41,14 @@ class LevelsController < ApplicationController
 
 
   def update
+    @level=Level.find(params[:id])
+    #params[:level][:name]=params[:level][:name].upcase.gsub(/[^A-Z]/, '')
+    params[:level][:name]=params[:level][:name].upcase
 
-
-    @level=Level.update(params.require(:level).permit(:name, :points, action_ids: [])).last
-    @level.name = @level.name.upcase.gsub(/[^A-Z]/, '')
-    if @level.save
+    if @level.update(params.require(:level).permit(:name, :points))
       redirect_to levels_path
     else
-      redirect_to edit_level_path, :alert => "Error al modificar el nivel. ¿Será que el nombre o los puntos están repetidos?"
+      redirect_to edit_level_path, :alert =>"Ocurrio un error al modificar el nivel. ¿Será que el nombre o los puntos están repetidos?"
     end
 
 

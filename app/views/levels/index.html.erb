@@ -14,8 +14,8 @@
     <td><%=v.name%></td>
     
     <td><%=v.points%></td>
-    <td><%= link_to "Eliminar", v, method: :delete, :data => {:confirm => 'Está seguro?'}  %></td>
     <td><%= link_to "Editar", edit_level_path(v) %></td>
+    <td><%= link_to "Eliminar", v, method: :delete, :data => {:confirm => 'Está seguro?'}  %></td>
   </tr>
   <%end%>
   </tbody>

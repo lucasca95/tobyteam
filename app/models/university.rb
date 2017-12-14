@@ -7,6 +7,8 @@ class University < ApplicationRecord
 		presence: true
 	validates :name, 
 		format: { with: /\A([a-zA-Z]+(?: +[a-zA-Z])?)+\z/, message: ": sólo se permiten letras en el nombre" }
+	validates :name,
+			uniqueness: true
 
 	validates :province,
 		presence: true
@@ -15,4 +17,6 @@ class University < ApplicationRecord
 
 	validates :url,
 		presence: true
+	validates :url,
+		uniqueness: true
 end

@@ -11,6 +11,7 @@ class UniversitiesController < ApplicationController
   end
 
   def edit
+    @university = University.find(params[:id])
   end
 
   def show
@@ -32,6 +33,14 @@ class UniversitiesController < ApplicationController
   end
 
   def update
+     @university=University.find(params[:id])
+
+    params[:university][:name]=params[:university][:name].upcase.gsub(/[^A-Z]/, '')
+    if @university.update(params.require(:university).permit(:name, :province, :url))
+      redirect_to universities_path
+    else
+      redirect_to edit_university_path, :alert =>"Ocurrio un error al modificar la universidad"
+    end
   end
 
   def destroy

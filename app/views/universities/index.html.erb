@@ -15,6 +15,13 @@
     <td><%=v.name%></td>
     <td><%=v.province%></td>
     <td><%=v.url%></td>
+    
+    <%if current_user%>
+      <%if current_user.permit('Administrar Univeridades')%>
+        <td><%= link_to "Editar", edit_university_path(v) %></td>
+      <%end%>
+     
+    <%end%>
   </tr>
   <%end%>
   </tbody>

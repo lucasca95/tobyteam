@@ -45,13 +45,18 @@ class LabelsController < ApplicationController
 
 
   def update
-    @label = Label.update(params.require(:label).permit(:title, :active)).last
-    @label.title = @label.title.upcase.gsub(/[^A-Z]/, '')
-    if @label.save
+
+    @label=Label.find(params[:id])
+
+    params[:label][:title]=params[:label][:title].upcase.gsub(/[^A-Z]/, '')
+    if @label.update(params.require(:label).permit(:title, :active))
       redirect_to labels_path
     else
-      redirect_to new_label_path, :alert =>"Ocurrio un error al modificar la etiqueta"
+      redirect_to edit_label_path, :alert =>"Ocurrio un error al modificar la etiqueta"
     end
+    
+    
+
   end
 
 

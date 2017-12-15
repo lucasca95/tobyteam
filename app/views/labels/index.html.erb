@@ -20,7 +20,7 @@
     <% end %>
     </td>
     <%if current_user.permit('Administrar Etiquetas')%>
-      <td><%= link_to "Eliminar", v, method: :delete, :data => {:confirm => 'Está seguro?'}  %></td>
+      <td><%= link_to "Eliminar", v, method: :delete, :data => {:confirm => 'Está seguro?'} , class: 'btn btn-danger' %></td>
     <%end%>
   </tr>
   <%end%>

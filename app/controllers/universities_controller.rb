@@ -35,5 +35,9 @@ class UniversitiesController < ApplicationController
   end
 
   def destroy
+    university=University.find(params[:id])
+    university.users.update_all("university_id=null")
+    university.destroy
+    redirect_to universities_path
   end
 end

@@ -7,6 +7,7 @@
     <th>Nombre</th>
     <th>Provincia</th>
     <th>URL</th>
+    <th></th>
   </tr>
 </thead>
   <% @lista_facultades.each do |v| %>
@@ -15,6 +16,9 @@
     <td><%=v.name%></td>
     <td><%=v.province%></td>
     <td><%=v.url%></td>
+    <% if !current_user.nil? &&(current_user.permit("Administrar"))%> 
+    <td><%= link_to "Eliminar", v, method: :delete, :data => {:confirm => 'Está seguro?'} ,class: 'btn btn-danger' %></td>
+    <% end %>
   </tr>
   <%end%>
   </tbody>

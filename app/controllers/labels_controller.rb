@@ -27,9 +27,14 @@ class LabelsController < ApplicationController
 
 
   def index
-    @lista_labels = Label.all
+    @type = params[:type]
+    case @type
+    when "1"
+      @lista_labels = Label.used
+    else
+      @lista_labels=Label.title
+    end
   end
-
 
 
   def create
@@ -54,8 +59,7 @@ class LabelsController < ApplicationController
     else
       redirect_to edit_label_path, :alert =>"Ocurrio un error al modificar la etiqueta"
     end
-    
-    
+
 
   end
 
@@ -74,7 +78,5 @@ class LabelsController < ApplicationController
       redirect_to new_label_path, :alert =>"Ocurrio un error al guardar la etiqueta"
     end
   end
-
-
 
 end

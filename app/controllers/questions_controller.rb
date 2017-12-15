@@ -13,6 +13,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @question.add_visit(current_user)
     @q_answers = @question.answers
     @q_comments = @question.comments
     @new_a = Answer.new
@@ -25,6 +26,8 @@ class QuestionsController < ApplicationController
     case @type
     when "1"
       @listaQuestions=Question.unanswer
+    when "2"
+      @listaQuestions=Question.visited
     else
       @listaQuestions=Question.created.search(params[:id2])
     end
@@ -35,7 +38,7 @@ class QuestionsController < ApplicationController
   def create
     #@l = Label.find(:id)
     @all_labels = Label.where(active: true).all
-    @question = Question.new(params.require(:question).permit(:title, :body, label_ids: []))
+    @question = Question.new(params.require(:question).permit(:title,:visits, :body, label_ids: []))
     @question.user = current_user
     
     if ((@question.label_ids.length>0) and (@question.label_ids.length<6))
@@ -62,6 +65,13 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    @question = Question.find(params[:id])
+    if current_user.id == @question.user.id
+      Question.destroy(params[:id])
+      redirect_to questions_path
+    else
+      redirect_to @question, :alert  => "No es dueño de esa Pregunta"
+    end 
   end
 
   def set_best

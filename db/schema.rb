@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20171117020154) do
     t.string "body"
     t.integer "user_id"
     t.bigint "answer_id"
+    t.integer "visits"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_questions_on_answer_id"

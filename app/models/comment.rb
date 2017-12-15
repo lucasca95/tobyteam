@@ -1,7 +1,7 @@
 class Comment < ApplicationRecord
   
   belongs_to :user
-  has_many :reports, :as => :reportable
+  has_many :reports, :as => :reportable, dependent: :destroy
   belongs_to :commentable, :polymorphic => true
 
   #Validaciones

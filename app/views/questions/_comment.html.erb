@@ -2,7 +2,9 @@
 	<td colspan="2">
 		<table class="table" >
 			<tr style="border-width: 3px;border: solid; border-color:  #257d9e ;">
-				<td rowspan="2" class="info"  style="border-width: 3px;border: solid; border-color:  #257d9e ;"><%=link_to comment.user.name, comment.user%><br>
+				<td rowspan="2" class="info"  style="border-width: 3px;border: solid; border-color:  #257d9e ;">
+					<%=link_to comment.user.name, comment.user%><br>
+					<%= link_to "Eliminar", comment, method: :delete, :data => {:confirm => 'Está seguro?'}  %><br>
 				<td ><%= comment.created_at.strftime("%Y-%m-%d")%></td>
 			</tr>
 			<tr style="border-width: 3px;border: solid; border-color:  #257d9e ;">

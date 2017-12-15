@@ -41,7 +41,7 @@
 						</table>
 						<% end %>
 					<% end %>
-
+					<%= link_to "Eliminar", answer, method: :delete, :data => {:confirm => 'Está seguro?'}  %><br>
 				<td colspan="3" rowspan="2" style="border-width: 3px;border: solid; border-color:  #257d9e ;"><%=answer.body%></td>
 
 			</tr>

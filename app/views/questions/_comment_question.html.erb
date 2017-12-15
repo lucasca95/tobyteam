@@ -4,6 +4,7 @@
 		<table class="table" style="border-width: 3px;border: solid; border-color:  #257d9e ;">
 			<tr>
 				<td rowspan="1"><%=comment_question.user.name%><br>
+					<%= link_to "Eliminar", comment_question, method: :delete, :data => {:confirm => 'Está seguro?'}  %><br>
 				<td colspan="3"><%=comment_question.body%></td>
 			</tr>
 		</table>

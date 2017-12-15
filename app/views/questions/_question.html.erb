@@ -9,7 +9,8 @@
 					<% @datosp = { 	question:@question,like: :true}%>
 					<% @datosn = { 	question:@question,like: :false}%> 
 					<% @voto = @question.votes.where(user: current_user).first%> 
-
+					
+					<%if @question.user_id != current_user.id%>
 					<% if @voto.nil? %> 
 						<table class="table table-hover table-sm table-responsive" >
 							<tr  >
@@ -20,28 +21,29 @@
 							</tr>
 						</table>
 					<% else %>
-						<% if !@voto.like %> 
+					
+					<% if !@voto.like %> 
 							<table class="table table-hover table-sm table-responsive">
 							<tr >
 								<td style="width: auto;"><%= link_to "", users_votar_pregunta_path(@datosp) ,method: :post, class:"btn btn-success glyphicon glyphicon-thumbs-up"%></td>
-						<td style="width: auto;"><span class="badge badge-light"><%=question.votes.where(like: true).count %></span></td>
+								<td style="width: auto;"><span class="badge badge-light"><%=question.votes.where(like: true).count %></span></td>
 								<td style="width: auto;"><%= link_to "", users_votar_pregunta_path(@datosn) ,method: :post, class:"btn btn-danger glyphicon glyphicon-thumbs-down", disabled: :true %></td>
 								<td style="width: auto;"><span class="badge badge-light"><%=question.votes.where(like: false).count %></span></td>
 							</tr>
-						</table>
+							</table>
 						<% else %>
 							<table class="table table-hover  table-sm table-responsive">
 							<tr >
 								<td style="width: auto;"><%= link_to "", users_votar_pregunta_path(@datosp) ,method: :post, class:"btn btn-success glyphicon glyphicon-thumbs-up", disabled: :true%></td>
-						<td style="width: auto;"><span class="badge badge-light"><%=question.votes.where(like: true).count %></span></td>
+								<td style="width: auto;"><span class="badge badge-light"><%=question.votes.where(like: true).count %></span></td>
 								<td style="width: auto;"><%= link_to "", users_votar_pregunta_path(@datosn) ,method: :post, class:"btn btn-danger glyphicon glyphicon-thumbs-down" %></td>
-					<td style="width: auto;"><span class="badge badge-light"><%=question.votes.where(like: false).count %></span></td>
+								<td style="width: auto;"><span class="badge badge-light"><%=question.votes.where(like: false).count %></span></td>
 							</tr>
-						</table>
+							</table>
 						<% end %>
 					<% end %>
-
-
+					<%end%>
+					
 					 </td>
 				<td colspan="3" style="border-width: 3px;border: solid; border-color:  #257d9e ;"><%=@question.title%></td>
 			</tr>

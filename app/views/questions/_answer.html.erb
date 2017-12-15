@@ -11,11 +11,12 @@
 					<% @datosn = { 	answer:answer,like: false}%> 
 					<% @voto = answer.votes.where(user: current_user).first%> 
 
+				<%if answer.user.id != current_user.id%>
 					<% if @voto.nil? %> 
 						<table class="table table-hover table-sm table-responsive">
 							<tr style="width: auto;">
 								<td style="width: auto;"><%= link_to "", users_votar_respuesta_path(@datosp) ,method: :post, class:"btn btn-success glyphicon glyphicon-thumbs-up"%></td>
-						<td style="width: auto;"><span class="badge badge-light"><%=answer.votes.where(like: true).count %></span></td>
+								<td style="width: auto;"><span class="badge badge-light"><%=answer.votes.where(like: true).count %></span></td>
 								<td style="width: auto;"><%= link_to "", users_votar_respuesta_path(@datosn) ,method: :post, class:"btn btn-danger glyphicon glyphicon-thumbs-down" %></td>
 								<td style="width: auto;"><span class="badge badge-light"><%=answer.votes.where(like: false).count %></span></td>
 							</tr>
@@ -25,23 +26,26 @@
 							<table class="table table-hover table-sm table-responsive">
 							<tr style="width: auto;">
 								<td style="width: auto;"><%= link_to "", users_votar_respuesta_path(@datosp) ,method: :post, class:"btn btn-success glyphicon glyphicon-thumbs-up"%></td>
-						<td style="width: auto;"><span class="badge badge-light"><%=answer.votes.where(like: true).count %></span></td>
+								<td style="width: auto;"><span class="badge badge-light"><%=answer.votes.where(like: true).count %></span></td>
 								<td style="width: auto;"><%= link_to "", users_votar_respuesta_path(@datosn) ,method: :post, class:"btn btn-danger glyphicon glyphicon-thumbs-down", disabled: :true %></td>
 								<td style="width: auto;"><span class="badge badge-light"><%=answer.votes.where(like: false).count %></span></td>
 							</tr>
-						</table>
+							</table>
 						<% else %>
 							<table class="table table-hover  table-sm table-responsive">
 							<tr style="width: auto;">
 								<td style="width: auto;"><%= link_to "", users_votar_respuesta_path(@datosp) ,method: :post, class:"btn btn-success glyphicon glyphicon-thumbs-up", disabled: :true%></td>
-						<td style="width: auto;"><span class="badge badge-light"><%=answer.votes.where(like: true).count %></span></td>
+								<td style="width: auto;"><span class="badge badge-light"><%=answer.votes.where(like: true).count %></span></td>
 								<td style="width: auto;"><%= link_to "", users_votar_respuesta_path(@datosn) ,method: :post, class:"btn btn-danger glyphicon glyphicon-thumbs-down" %></td>
-					<td style="width: auto;"><span class="badge badge-light"><%=answer.votes.where(like: false).count %></span></td>
+								<td style="width: auto;"><span class="badge badge-light"><%=answer.votes.where(like: false).count %></span></td>
 							</tr>
-						</table>
+							</table>
 						<% end %>
 					<% end %>
 					<%= link_to "Eliminar", answer, method: :delete, :data => {:confirm => 'Está seguro?'}  %><br>
+
+				<%end%>
+
 				<td colspan="3" rowspan="2" style="border-width: 3px;border: solid; border-color:  #257d9e ;"><%=answer.body%></td>
 
 			</tr>

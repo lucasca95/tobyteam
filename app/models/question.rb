@@ -28,6 +28,14 @@ class Question < ApplicationRecord
       group('questions.id').
       order('answers_count').limit(15)
   end
+  def self.populars
+    select('questions.*,  (questions.visits + 10 * COUNT(answers.id) + 2 * COUNT(comments.id)) AS answers_count').
+      joins("FULL OUTER  JOIN \"answers\" ON \"answers\".\"question_id\" = \"questions\".\"id\"").                                                   
+      joins("FULL OUTER  JOIN \"comments\" ON \"comments\".\"commentable_id\" = \"questions\".\"id\" and \"comments\".\"commentable_type\" = 'Question'").                                                   
+      where("questions.id is not null").
+      group('questions.id').
+      order('answers_count desc').limit(15)
+  end
 
 ############
   def self.search (text)

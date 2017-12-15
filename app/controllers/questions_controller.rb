@@ -28,6 +28,8 @@ class QuestionsController < ApplicationController
       @listaQuestions=Question.unanswer
     when "2"
       @listaQuestions=Question.visited
+    when "3"
+      @listaQuestions=Question.populars
     else
       @listaQuestions=Question.created.search(params[:id2])
     end

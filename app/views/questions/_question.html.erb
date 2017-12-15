@@ -10,7 +10,7 @@
 					<% @datosn = { 	question:@question,like: :false}%> 
 					<% @voto = @question.votes.where(user: current_user).first%> 
 					
-					<%if @question.user_id != current_user.id%>
+					<%if !current_user.nil? && (@question.user_id != current_user.id)%>
 					<% if @voto.nil? %> 
 						<table class="table table-hover table-sm table-responsive" >
 							<tr  >
@@ -42,8 +42,10 @@
 							</table>
 						<% end %>
 					<% end %>
+					<%end%>
 
-					<%= link_to "Eliminar", @question, method: :delete, :data => {:confirm => 'Está seguro?'}  %><br>
+					<%if !current_user.nil? && (@question.user_id == current_user.id)%>
+						<%= link_to "Eliminar", @question, method: :delete, :data => {:confirm => 'Está seguro?'}  %><br>
 					<%end%>
 
 					 </td>

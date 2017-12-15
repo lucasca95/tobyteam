@@ -16,14 +16,13 @@
     <td><%=v.name%></td>
     <td><%=v.province%></td>
     <td><%=v.url%></td>
-<<<<<<< HEAD
     
-    <%if current_user.nil?%>
+    <%if !current_user.nil?%>
       <%if current_user.permit('Administrar Univeridades')%>
         <td><%= link_to "Editar", edit_university_path(v) %></td>
       <%end%>
 
-    <% if !current_user.nil? &&(current_user.permit("Administrar"))%> 
+    <% if !current_user.nil? &&(current_user.permit("Administrar Univeridades"))%> 
     <td><%= link_to "Eliminar", v, method: :delete, :data => {:confirm => 'Está seguro?'} ,class: 'btn btn-danger' %></td>
     <% end %>
         <%end%>

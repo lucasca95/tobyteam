@@ -17,8 +17,7 @@ class University < ApplicationRecord
 
 	validates :url,
 		presence: true
-	validates :url,
-		uniqueness: true
+
 
 
   def self.topquestion
@@ -36,4 +35,5 @@ class University < ApplicationRecord
       joins("FULL OUTER  JOIN \"universities\" ON \"users\".\"university_id\" = \"universities\".\"id\"").                                                   
       where("universities.id = #{self.id}")
   end
+
 end
